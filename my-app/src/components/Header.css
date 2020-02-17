@@ -3,3 +3,7 @@
   justify-content: space-evenly;
   flex-direction: row;
 }
+.appBarColor {
+  background-color: red;
+
+}
