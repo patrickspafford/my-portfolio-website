@@ -8,6 +8,8 @@ import { withStyles } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import InfoIcon from '@material-ui/icons/Info';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -32,7 +34,13 @@ return ([
                 <StyledIconButton onClick={() => setOpen(true)}>
                   <MenuIcon />
                 </StyledIconButton>
-              <h3>Patrick Spafford</h3>
+                <StyledIconButton>
+                    <GitHubIcon />
+                  </StyledIconButton>
+              <h3>Patrick Spafford's Portfolio</h3>
+              <StyledIconButton>
+                <InfoIcon />
+              </StyledIconButton>
               <StyledIconButton>
                 <DarkModeIcon />
               </StyledIconButton>
