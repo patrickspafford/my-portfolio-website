@@ -12,19 +12,25 @@ const StyledAppBar = withStyles({
     backgroundColor: '#D45E25'
   }
 })(AppBar);
+
+const StyledIconButton = withStyles({
+root: {
+  borderRadius: '0%'
+}
+})(IconButton)
 export default function Header() {
 
     return (
       <header>
           <StyledAppBar classes position='fixed'>
             <div className='appBar'>
-              <IconButton>
+              <StyledIconButton>
                 <MenuIcon />
-              </IconButton>
+              </StyledIconButton>
               <h3>Patrick Spafford</h3>
-              <IconButton>
+              <StyledIconButton>
                 <DarkModeIcon />
-              </IconButton>
+              </StyledIconButton>
             </div>
           </StyledAppBar>  
       </ header>
