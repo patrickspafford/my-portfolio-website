@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu'
 import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import DarkModeIcon from '@material-ui/icons/BrightnessMedium';
 import './Header.css'
 import { withStyles } from '@material-ui/core';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 const StyledAppBar = withStyles({
   colorPrimary: 
   {
-    backgroundColor: '#D45E25'
+    backgroundColor: '#dd550c'
   }
 })(AppBar);
 
@@ -19,20 +22,30 @@ root: {
 }
 })(IconButton)
 export default function Header() {
+const [open, setOpen] = useState(false);
 
-    return (
+
+return ([
       <header>
-          <StyledAppBar classes position='fixed'>
+          <StyledAppBar position='fixed'>
             <div className='appBar'>
-              <StyledIconButton>
-                <MenuIcon />
-              </StyledIconButton>
+                <StyledIconButton onClick={() => setOpen(true)}>
+                  <MenuIcon />
+                </StyledIconButton>
               <h3>Patrick Spafford</h3>
               <StyledIconButton>
                 <DarkModeIcon />
               </StyledIconButton>
             </div>
           </StyledAppBar>  
-      </ header>
-    )
-}
+      </ header>,
+      <div>
+      <Drawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
+          <List>
+            <ListItem></ListItem>
+            <ListItem>Test Item</ListItem>
+            <ListItem>Test Item 2</ListItem>
+          </List>
+      </Drawer>
+      </div>
+])}
