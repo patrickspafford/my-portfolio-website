@@ -46,74 +46,43 @@ const StyledCardMedia = withStyles({
 
 export default function HomePage() {
 
+const cardData = [
+{
+    title: "My Coding Projects",
+    image: ProjectsImage,
+    buttons: ["Explore"]
+},
+{
+    title: "My Hobbies",
+    image: Hobbies,
+    buttons: ["Explore"]
+},
+{
+    title: "My Resume",
+    image: ProfessionalPhoto,
+    buttons: ["Explore", "Download pdf"]
+},
+{
+    title: "What's On My Bookshelf?",
+    image: BookImage,
+    buttons: ["Explore", "Download List"]
+}]
 return (
 <div style={{paddingTop: '60px'}}>
 <StyledGrid container={true} justify="space-evenly">
-    <StyledCard>
-        <CardActionArea>
-            <StyledCardMedia src={ProjectsImage} title="Coding Projects" height="400" component="img" />
-            <CardContent>
-                <h2 className='h2'><u>My Coding Projects</u></h2>
-            </CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button size="small">
-                <h4 className='h4' >Share</h4>
-            </Button>
-            <Button size="small">
-                <h4 className='h4' >Explore</h4>
-            </Button>
-        </CardActions>
-    </StyledCard>
-    <StyledCard>
-        <CardActionArea>
-            <StyledCardMedia src={Hobbies} title="Hobbies" height="400" component="img" />
-            <CardContent>
-                <h2 className='h2'><u>My Hobbies</u></h2>
-            </CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button size="small">
-                <h4 className='h4' >Share</h4>
-            </Button>
-            <Button size="small">
-                <h4 className='h4' >Learn More</h4>
-            </Button>
-        </CardActions>
-    </StyledCard>
-    <StyledCard>
-      <CardActionArea>
-        <StyledCardMedia src={ProfessionalPhoto} title="Resume" height="400" component="img" />
-        <CardContent>
-            <h2 className='h2'><u>My Resume</u></h2>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small">
-            <h4 className='h4' >Share</h4>
-        </Button>
-        <Button size="small">
-            <h4 className='h4' >Download</h4>
-        </Button>
-      </CardActions>
-    </StyledCard> 
-    
-    <StyledCard>
-        <CardActionArea>
-            <StyledCardMedia src={BookImage} title="What's On My Bookshelf?" height="400" component="img" />
-            <CardContent>
-                <h2 className='h2'><u>What's On My Bookshelf?</u></h2>
-            </CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button size="small">
-                <h4 className='h4'>Share</h4>
-            </Button>
-            <Button size="small">
-                <h4 className='h4'>Explore</h4>
-            </Button>
-        </CardActions>
-    </StyledCard>
+    {cardData.map(card => (
+        <StyledCard>
+            <CardActionArea>
+                <StyledCardMedia src={card.image} title={card.title} height="400" component="img" />
+                <CardContent>
+                    <h2 className='h2'><u>{card.title}</u></h2>
+                </CardContent>
+            </CardActionArea>
+            <CardActions>
+                {card.buttons.map(buttonContent => (<Button size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
+            </CardActions>
+        </StyledCard>
+    ))}
 </ StyledGrid>
 </div>
 
