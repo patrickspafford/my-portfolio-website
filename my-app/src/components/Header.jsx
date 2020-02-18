@@ -23,10 +23,15 @@ root: {
   borderRadius: '0%'
 }
 })(IconButton)
+
+const StyledDrawer = withStyles({
+  paper: {
+    backgroundColor: '#03244d'
+  }
+})(Drawer);
+
 export default function Header() {
 const [open, setOpen] = useState(false);
-
-
 return ([
       <header>
           <StyledAppBar position='fixed'>
@@ -48,12 +53,12 @@ return ([
           </StyledAppBar>  
       </ header>,
       <div>
-      <Drawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
+      <StyledDrawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
           <List>
             <ListItem></ListItem>
             <ListItem>Test Item</ListItem>
             <ListItem>Test Item 2</ListItem>
           </List>
-      </Drawer>
+      </StyledDrawer>
       </div>
 ])}
