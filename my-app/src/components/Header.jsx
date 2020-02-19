@@ -14,7 +14,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 const StyledAppBar = withStyles({
   colorPrimary: 
   {
-    backgroundColor: '#dd550c'
+    backgroundColor: '#142630'
   }
 })(AppBar);
 
@@ -26,7 +26,7 @@ root: {
 
 const StyledDrawer = withStyles({
   paper: {
-    backgroundColor: '#03244d'
+    backgroundColor: '#053752'
   }
 })(Drawer);
 

@@ -22,7 +22,7 @@ const StyledCard = withStyles({
        marginRight: '10px',
        marginLeft: '10px',
        border: '2px solid white',
-       backgroundColor: '#496e9c',
+       backgroundColor: '#6d8fa1',
        minWidth: '300px',
        maxWidth: '700px'
    }
@@ -37,7 +37,7 @@ const StyledGrid = withStyles({
 
 const StyledCardMedia = withStyles({
     root : {
-        paddingTop: '10px',   
+        paddingTop: '10px',  
     },
     img: {
         objectFit: 'scale-down',
@@ -71,7 +71,7 @@ return (
 <div style={{paddingTop: '60px'}}>
 <StyledGrid container={true} justify="space-evenly">
     {cardData.map(card => (
-        <StyledCard>
+        <StyledCard key={card.title}>
             <CardActionArea>
                 <StyledCardMedia src={card.image} title={card.title} height="400" component="img" />
                 <CardContent>
@@ -79,7 +79,7 @@ return (
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                {card.buttons.map(buttonContent => (<Button size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
+                {card.buttons.map((buttonContent, i) => (<Button key={i} size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
             </CardActions>
         </StyledCard>
     ))}
