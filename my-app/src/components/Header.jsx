@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu'
 import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
-import DarkModeIcon from '@material-ui/icons/BrightnessMedium';
+import BrightnessMedium from '@material-ui/icons/BrightnessMedium';
 import './Header.css'
 import { withStyles } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
@@ -47,7 +47,7 @@ return ([
                 <InfoIcon />
               </StyledIconButton>
               <StyledIconButton>
-                <DarkModeIcon />
+                <BrightnessMedium />
               </StyledIconButton>
             </div>
           </StyledAppBar>  

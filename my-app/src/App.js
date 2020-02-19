@@ -4,7 +4,7 @@ import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Header />
@@ -12,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

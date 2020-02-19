@@ -50,29 +50,33 @@ const cardData = [
 {
     title: "My Coding Projects",
     image: ProjectsImage,
-    buttons: ["Explore"]
+    buttons: ["Explore"],
+    href: '/projects'
 },
 {
     title: "My Hobbies",
     image: Hobbies,
-    buttons: ["Explore"]
+    buttons: ["Explore"],
+    href: '/hobbies'
 },
 {
     title: "My Resume",
     image: ProfessionalPhoto,
-    buttons: ["Explore", "Download pdf"]
+    buttons: ["Explore", "Download pdf"],
+    href: '/resume'
 },
 {
     title: "What's On My Bookshelf?",
     image: BookImage,
-    buttons: ["Explore", "Download List"]
+    buttons: ["Explore", "Download List"],
+    href: '/bookshelf'
 }]
 return (
 <div style={{paddingTop: '60px'}}>
 <StyledGrid container={true} justify="space-evenly">
     {cardData.map(card => (
         <StyledCard key={card.title}>
-            <CardActionArea>
+            <CardActionArea href={card.href}>
                 <StyledCardMedia src={card.image} title={card.title} height="400" component="img" />
                 <CardContent>
                     <h2 className='h2'><u>{card.title}</u></h2>
