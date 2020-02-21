@@ -41,31 +41,42 @@ const StyledDrawer = withStyles({
 
 export default function Header() {
 const [open, setOpen] = useState(false);
+const [darkMode, setDarkMode] = useState(false);
 const navBarItems = [
   {
     name: "Bookshelf",
-    icon: <BookIcon />
+    icon: <BookIcon style={{padding: '15px'}}/>,
+    href: "/bookshelf"
   },
   {
     name: "Contact Me",
-    icon: <ContactMailIcon />
+    icon: <ContactMailIcon style={{padding: '15px'}}/>,
+    href: "/"
   },
   {
     name: "Coding Projects",
-    icon: <CodeIcon />
+    icon: <CodeIcon style={{padding: '15px'}}/>,
+    href: "/projects"
   },
   {
     name: "GitHub",
-    icon: <AccountTreeIcon />
+    icon: <AccountTreeIcon style={{padding: '15px'}} />,
+    href: "https://github.com/patrickspafford"
   },
   {
     name: "Hobbies",
-    icon: <SportsHandballIcon />
+    icon: <SportsHandballIcon style={{padding: '15px'}} />,
+    href: "/hobbies"
   },
   {
     name: "Resume",
-    icon: <DescriptionIcon />
+    icon: <DescriptionIcon style={{padding: '15px'}} />,
+    href: "/resume"
   } ]
+
+const toggleDarkMode = () => {
+  setDarkMode(!darkMode);
+}
 return ([
       <header>
           <StyledAppBar position='fixed'>
@@ -83,7 +94,7 @@ return ([
               <StyledIconButton>
                 <InfoIcon />
               </StyledIconButton>
-              <StyledIconButton>
+              <StyledIconButton onClick={() => toggleDarkMode()}>
                 <BrightnessMedium />
               </StyledIconButton>
             </div>
@@ -94,7 +105,7 @@ return ([
           <List>
             {Object.values(navBarItems).map(navBarItem => {
               return (
-              <ListItem key={navBarItem}>
+              <ListItem key={navBarItem.name}>
                  <StyledIconButton size="small">
                  {navBarItem.icon}
                  {navBarItem.name}

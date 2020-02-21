@@ -2,9 +2,9 @@ import React from 'react';
 import Header from '../components/Header'
 export default function HobbiesPage() {
     return(
-    <div>
+    <div style={{textAlign: "center"}}>
         <Header />
-        <p>Hobbies</p>
+        
     </div>
     )
 }

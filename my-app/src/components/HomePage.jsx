@@ -17,14 +17,13 @@ import './HomePage.css';
 const StyledCard = withStyles({
    root: {
        width: '35%',
-       height: '45%',
        marginTop: '10px',
        marginRight: '10px',
        marginLeft: '10px',
        border: '2px solid white',
        backgroundColor: '#6d8fa1',
        minWidth: '300px',
-       maxWidth: '700px'
+       maxWidth: '700px',
    }
   })(Card);
 
@@ -44,6 +43,14 @@ const StyledCardMedia = withStyles({
     }
 })(CardMedia);
 
+const StyledButton = withStyles({
+label: {
+    border: '1px solid white',
+    borderRadius: '5px',
+    padding: '10px'
+}
+})(Button);
+
 export default function HomePage() {
 
 const cardData = [
@@ -52,7 +59,7 @@ const cardData = [
     image: ProjectsImage,
     buttons: ["Explore"],
     href: '/projects',
-    buttonRefs: ['/projects']
+    buttonRefs: ['/projects'],
 },
 {
     title: "My Hobbies",
@@ -81,13 +88,16 @@ return (
     {cardData.map(card => (
         <StyledCard key={card.title}>
             <CardActionArea href={card.href}>
-                <StyledCardMedia src={card.image} title={card.title} height="400" component="img" />
+                <StyledCardMedia src={card.image} title={card.title} height="350" component="img" />
                 <CardContent>
                     <h2 className='h2'><u>{card.title}</u></h2>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                {card.buttons.map((buttonContent, i) => (<Button key={i} href={card.buttonRefs[i]} size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
+                {card.buttons.map((buttonContent, i) =>
+                (<StyledButton key={i} href={card.buttonRefs[i]} size="small">
+                    <h4 className='h4'>{buttonContent}</h4>
+                </StyledButton>))}
             </CardActions>
         </StyledCard>
     ))}
