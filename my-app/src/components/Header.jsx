@@ -16,6 +16,7 @@ import CodeIcon from '@material-ui/icons/Code';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import DescriptionIcon from '@material-ui/icons/Description';
+import HomeIcon from '@material-ui/icons/Home';
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -44,6 +45,11 @@ const [open, setOpen] = useState(false);
 const [darkMode, setDarkMode] = useState(false);
 const navBarItems = [
   {
+    name: "Home",
+    icon: <HomeIcon style={{padding: '15px'}} />,
+    href: "/"
+  },
+  {
     name: "Bookshelf",
     icon: <BookIcon style={{padding: '15px'}}/>,
     href: "/bookshelf"
@@ -51,7 +57,7 @@ const navBarItems = [
   {
     name: "Contact Me",
     icon: <ContactMailIcon style={{padding: '15px'}}/>,
-    href: "/"
+    href: "/resume"
   },
   {
     name: "Coding Projects",
@@ -82,7 +88,7 @@ return ([
           <StyledAppBar position='fixed'>
             <div className='appBar'>
                 <StyledIconButton onClick={() => setOpen(true)}>
-                  <MenuIcon />
+                  <MenuIcon/>
                 </StyledIconButton>
                 
                 <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
@@ -103,10 +109,10 @@ return ([
       <div>
       <StyledDrawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
           <List>
-            {Object.values(navBarItems).map(navBarItem => {
+            {Object.values(navBarItems).map((navBarItem, i) => {
               return (
-              <ListItem key={navBarItem.name}>
-                 <StyledIconButton size="small">
+              <ListItem key={navBarItem.name} style={{borderBottom: i === 0 ? '2px solid white' : undefined}}>
+                 <StyledIconButton size="small" href={navBarItem.href}>
                  {navBarItem.icon}
                  {navBarItem.name}
                  </StyledIconButton>
