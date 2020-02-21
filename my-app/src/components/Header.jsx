@@ -14,19 +14,22 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 const StyledAppBar = withStyles({
   colorPrimary: 
   {
-    backgroundColor: '#142630'
+    backgroundColor: '#142630',
+    color: '#eee'
   }
 })(AppBar);
 
 const StyledIconButton = withStyles({
 root: {
-  borderRadius: '0%'
+  borderRadius: '0%',
+  color: '#eee'
 }
 })(IconButton)
 
 const StyledDrawer = withStyles({
   paper: {
-    backgroundColor: '#053752'
+    backgroundColor: '#142630',
+    color: '#eee'
   }
 })(Drawer);
 

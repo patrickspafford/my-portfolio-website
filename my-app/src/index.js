@@ -7,21 +7,23 @@ import Resume from './views/ResumePage';
 import Hobbies from './views/HobbiesPage';
 import Projects from './views/ProjectsPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { render } from 'react-dom'
-import HomePage from './components/HomePage';
+import { Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render( 
-    <Router>
-        <Route path='/home' component={App} />
-        <Route path='/bookshelf' component={Bookshelf}/>
-        <Route path='/resume' component={Resume} />
-        <Route path='/hobbies' component={Hobbies}/>
-        <Route path='/projects' component={Projects} />
-    </Router>, document.getElementById('root')
-)
+const RoutedApp = () => {
+    return(
+        <Router>
+            <Switch>
+                <Route path='/bookshelf' component={Bookshelf}/>
+                <Route path='/resume' component={Resume} />
+                <Route path='/hobbies' component={Hobbies}/>
+                <Route path='/projects' component={Projects} /> 
+                <Route path='/' component={App} />
+            </Switch>
+        </Router>)
+};
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<RoutedApp/>, document.getElementById('root'));
 
 
 

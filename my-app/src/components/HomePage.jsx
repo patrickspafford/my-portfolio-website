@@ -30,7 +30,7 @@ const StyledCard = withStyles({
 
 const StyledGrid = withStyles({
     container: {
-        padding: '30px'
+        padding: '10px'
     }
 
 })(Grid);
@@ -51,25 +51,29 @@ const cardData = [
     title: "My Coding Projects",
     image: ProjectsImage,
     buttons: ["Explore"],
-    href: '/projects'
+    href: '/projects',
+    buttonRefs: ['/projects']
 },
 {
     title: "My Hobbies",
     image: Hobbies,
     buttons: ["Explore"],
-    href: '/hobbies'
+    href: '/hobbies',
+    buttonRefs: ['/hobbies']
 },
 {
     title: "My Resume",
     image: ProfessionalPhoto,
     buttons: ["Explore", "Download pdf"],
-    href: '/resume'
+    href: '/resume',
+    buttonRefs: ['/resume', '/resume']
 },
 {
     title: "What's On My Bookshelf?",
     image: BookImage,
     buttons: ["Explore", "Download List"],
-    href: '/bookshelf'
+    href: '/bookshelf',
+    buttonRefs: ['/bookshelf', '/bookshelf']
 }]
 return (
 <div style={{paddingTop: '60px'}}>
@@ -83,7 +87,7 @@ return (
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                {card.buttons.map((buttonContent, i) => (<Button key={i} size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
+                {card.buttons.map((buttonContent, i) => (<Button key={i} href={card.buttonRefs[i]} size="small"><h4 className='h4'>{buttonContent}</h4></Button>))}
             </CardActions>
         </StyledCard>
     ))}
