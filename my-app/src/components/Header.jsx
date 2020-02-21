@@ -10,6 +10,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import InfoIcon from '@material-ui/icons/Info';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import BookIcon from '@material-ui/icons/Book';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import CodeIcon from '@material-ui/icons/Code';
+import SportsHandballIcon from '@material-ui/icons/SportsHandball';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -35,6 +41,31 @@ const StyledDrawer = withStyles({
 
 export default function Header() {
 const [open, setOpen] = useState(false);
+const navBarItems = [
+  {
+    name: "Bookshelf",
+    icon: <BookIcon />
+  },
+  {
+    name: "Contact Me",
+    icon: <ContactMailIcon />
+  },
+  {
+    name: "Coding Projects",
+    icon: <CodeIcon />
+  },
+  {
+    name: "GitHub",
+    icon: <AccountTreeIcon />
+  },
+  {
+    name: "Hobbies",
+    icon: <SportsHandballIcon />
+  },
+  {
+    name: "Resume",
+    icon: <DescriptionIcon />
+  } ]
 return ([
       <header>
           <StyledAppBar position='fixed'>
@@ -42,10 +73,13 @@ return ([
                 <StyledIconButton onClick={() => setOpen(true)}>
                   <MenuIcon />
                 </StyledIconButton>
-                <StyledIconButton>
+                
+                <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
                     <GitHubIcon />
                   </StyledIconButton>
-              <h3>Patrick Spafford's Portfolio</h3>
+                  <StyledIconButton size="small" href="/">
+                    <p>Patrick Spafford's Portfolio</p>
+                  </StyledIconButton>
               <StyledIconButton>
                 <InfoIcon />
               </StyledIconButton>
@@ -58,9 +92,15 @@ return ([
       <div>
       <StyledDrawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
           <List>
-            <ListItem></ListItem>
-            <ListItem>Test Item</ListItem>
-            <ListItem>Test Item 2</ListItem>
+            {Object.values(navBarItems).map(navBarItem => {
+              return (
+              <ListItem key={navBarItem}>
+                 <StyledIconButton size="small">
+                 {navBarItem.icon}
+                 {navBarItem.name}
+                 </StyledIconButton>
+              </ListItem>)
+            })}
           </List>
       </StyledDrawer>
       </div>

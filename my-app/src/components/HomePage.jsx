@@ -30,7 +30,7 @@ const StyledCard = withStyles({
 
 const StyledGrid = withStyles({
     container: {
-        padding: '10px'
+        paddingTop: '10px'
     }
 
 })(Grid);
