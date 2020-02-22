@@ -43,6 +43,16 @@ const StyledDrawer = withStyles({
   }
 })(Drawer);
 
+const StyledSwitch = withStyles({
+  thumb: {
+
+  },
+  track: {
+    backgroundColor: '#fff'
+  }
+
+})(Switch);
+
 export default function Header() {
 const [open, setOpen] = useState(false);
 const [darkMode, setDarkMode] = useState(false);
@@ -110,7 +120,7 @@ return ([
               <StyledIconButton>
                 <InfoIcon />
               </StyledIconButton>
-              <FormControlLabel label="Dark Mode" control={<Switch />} />
+              <FormControlLabel label="Dark Mode" control={<Switch onChange={() => toggleDarkMode} />} />
             </div>
           </StyledAppBar>  
       </ header>,
