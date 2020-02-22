@@ -17,6 +17,9 @@ import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import DescriptionIcon from '@material-ui/icons/Description';
 import HomeIcon from '@material-ui/icons/Home';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -75,6 +78,11 @@ const navBarItems = [
     href: "/hobbies"
   },
   {
+    name: "LinkedIn",
+    icon: <LinkedInIcon style={{padding: '15px'}} />,
+    href: "https://www.linkedin.com/in/patrickspafford/"
+  },
+  {
     name: "Resume",
     icon: <DescriptionIcon style={{padding: '15px'}} />,
     href: "/resume"
@@ -90,8 +98,10 @@ return ([
                 <StyledIconButton onClick={() => setOpen(true)}>
                   <MenuIcon/>
                 </StyledIconButton>
-                
-                <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
+                <StyledIconButton
+                href="https://github.com/patrickspafford"
+                target="_blank"
+                rel="noopener noreferrer">
                     <GitHubIcon />
                   </StyledIconButton>
                   <StyledIconButton size="small" href="/">
@@ -100,9 +110,7 @@ return ([
               <StyledIconButton>
                 <InfoIcon />
               </StyledIconButton>
-              <StyledIconButton onClick={() => toggleDarkMode()}>
-                <BrightnessMedium />
-              </StyledIconButton>
+              <FormControlLabel label="Dark Mode" control={<Switch />} />
             </div>
           </StyledAppBar>  
       </ header>,

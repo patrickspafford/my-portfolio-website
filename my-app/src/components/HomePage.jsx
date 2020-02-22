@@ -11,6 +11,7 @@ import Hobbies from '../pictures/Hobbies.jpg';
 import ProjectsImage from '../pictures/ProjectsImage.png';
 import ProfessionalPhoto from '../pictures/professionalPhoto.jpg';
 import BookImage from '../pictures/SheHasHerMothersLaugh.jpg';
+import Resume from '../pictures/Resume.pdf'
 import { withStyles } from '@material-ui/core';
 import './HomePage.css';
 
@@ -60,27 +61,31 @@ const cardData = [
     buttons: ["Explore"],
     href: '/projects',
     buttonRefs: ['/projects'],
+    download: [false]
 },
 {
     title: "My Hobbies",
     image: Hobbies,
     buttons: ["Explore"],
     href: '/hobbies',
-    buttonRefs: ['/hobbies']
+    buttonRefs: ['/hobbies'],
+    download: [false]
 },
 {
     title: "My Resume",
     image: ProfessionalPhoto,
     buttons: ["Explore", "Download pdf"],
     href: '/resume',
-    buttonRefs: ['/resume', '/resume']
+    buttonRefs: ['/resume', Resume],
+    download: [false, 'PatrickSpaffordResume']
 },
 {
     title: "What's On My Bookshelf?",
     image: BookImage,
     buttons: ["Explore", "Download List"],
     href: '/bookshelf',
-    buttonRefs: ['/bookshelf', '/bookshelf']
+    buttonRefs: ['/bookshelf', ''],
+    download: [false, 'PatrickSpaffordBookshelf']
 }]
 return (
 <div style={{paddingTop: '60px'}}>
@@ -95,7 +100,7 @@ return (
             </CardActionArea>
             <CardActions>
                 {card.buttons.map((buttonContent, i) =>
-                (<StyledButton key={i} href={card.buttonRefs[i]} size="small">
+                (<StyledButton key={i} href={card.buttonRefs[i]} download={card.download[i]} size="small">
                     <h4 className='h4'>{buttonContent}</h4>
                 </StyledButton>))}
             </CardActions>
