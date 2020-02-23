@@ -1,25 +1,10 @@
 import React, { useState } from 'react';
-import MenuIcon from '@material-ui/icons/Menu'
-import IconButton from '@material-ui/core/IconButton';
-import AppBar from '@material-ui/core/AppBar';
-import BrightnessMedium from '@material-ui/icons/BrightnessMedium';
+import InfoModal from './InfoModal';
+import { IconButton, AppBar, Drawer, List, ListItem, FormControlLabel, Switch,
+  createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core';
 import './Header.css'
-import { withStyles } from '@material-ui/core';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import InfoIcon from '@material-ui/icons/Info';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import BookIcon from '@material-ui/icons/Book';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
-import CodeIcon from '@material-ui/icons/Code';
-import SportsHandballIcon from '@material-ui/icons/SportsHandball';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import DescriptionIcon from '@material-ui/icons/Description';
-import HomeIcon from '@material-ui/icons/Home';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import { Info, GitHub, Book, ContactMail, Code, SportsHandball,
+  AccountTree, Description, Home, LinkedIn, Menu, SentimentSatisfied} from '@material-ui/icons'
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -45,56 +30,57 @@ const StyledDrawer = withStyles({
 
 const StyledSwitch = withStyles({
   thumb: {
-
+    backgroundColor: '#92dff0'
   },
   track: {
     backgroundColor: '#fff'
   }
-
 })(Switch);
+
 
 export default function Header() {
 const [open, setOpen] = useState(false);
 const [darkMode, setDarkMode] = useState(false);
+const [infoModal, setInfoModal] = useState(false);
 const navBarItems = [
   {
     name: "Home",
-    icon: <HomeIcon style={{padding: '15px'}} />,
+    icon: <Home style={{padding: '15px'}} />,
     href: "/"
   },
   {
     name: "Bookshelf",
-    icon: <BookIcon style={{padding: '15px'}}/>,
+    icon: <Book style={{padding: '15px'}}/>,
     href: "/bookshelf"
   },
   {
     name: "Contact Me",
-    icon: <ContactMailIcon style={{padding: '15px'}}/>,
+    icon: <ContactMail style={{padding: '15px'}}/>,
     href: "/resume"
   },
   {
     name: "Coding Projects",
-    icon: <CodeIcon style={{padding: '15px'}}/>,
+    icon: <Code style={{padding: '15px'}}/>,
     href: "/projects"
   },
   {
     name: "GitHub",
-    icon: <AccountTreeIcon style={{padding: '15px'}} />,
+    icon: <AccountTree style={{padding: '15px'}} />,
     href: "https://github.com/patrickspafford"
   },
   {
     name: "Hobbies",
-    icon: <SportsHandballIcon style={{padding: '15px'}} />,
+    icon: <SportsHandball style={{padding: '15px'}} />,
     href: "/hobbies"
   },
   {
     name: "LinkedIn",
-    icon: <LinkedInIcon style={{padding: '15px'}} />,
+    icon: <LinkedIn style={{padding: '15px'}} />,
     href: "https://www.linkedin.com/in/patrickspafford/"
   },
   {
     name: "Resume",
-    icon: <DescriptionIcon style={{padding: '15px'}} />,
+    icon: <Description style={{padding: '15px'}} />,
     href: "/resume"
   } ]
 
@@ -106,26 +92,27 @@ return ([
           <StyledAppBar position='fixed'>
             <div className='appBar'>
                 <StyledIconButton onClick={() => setOpen(true)}>
-                  <MenuIcon/>
+                  <Menu/>
                 </StyledIconButton>
                 <StyledIconButton
                 href="https://github.com/patrickspafford"
                 target="_blank"
                 rel="noopener noreferrer">
-                    <GitHubIcon />
+                    <GitHub />
                   </StyledIconButton>
                   <StyledIconButton size="small" href="/">
                     <p>Patrick Spafford's Portfolio</p>
                   </StyledIconButton>
-              <StyledIconButton>
-                <InfoIcon />
+              <StyledIconButton onClick={() => setInfoModal(!infoModal)}>
+                <Info />
               </StyledIconButton>
-              <FormControlLabel label="Dark Mode" control={<Switch onChange={() => toggleDarkMode} />} />
+              <FormControlLabel label="Dark Mode" control={<StyledSwitch onChange={() => toggleDarkMode} />} />
             </div>
           </StyledAppBar>  
       </ header>,
+      <InfoModal open={infoModal} close={() => setInfoModal(false)} />,
       <div>
-      <StyledDrawer open={open} onBackdropClick={() => setOpen(false)} transitionDuration={300}>
+      <StyledDrawer open={open} onBackdropClick={(e) => setOpen(false)} transitionDuration={300}>
           <List>
             {Object.values(navBarItems).map((navBarItem, i) => {
               return (
