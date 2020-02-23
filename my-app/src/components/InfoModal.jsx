@@ -1,11 +1,14 @@
 import { Modal, Paper } from '@material-ui/core';
 import React from 'react';
-import { PinDropSharp } from '@material-ui/icons';
+import './InfoModal.css';
 
-export default function InfoModal({open, close,...props}) {
-
+export default function InfoModal({open, close}) {
 return(
-    <Modal open={open} onBackdropClick={props.close}><Paper><p>Yep</p></Paper></Modal>
+    <Modal className='modal' open={open} onBackdropClick={close}>
+        <Paper>
+            <p>Yep</p>
+        </Paper>
+    </Modal>
 )
 
 }

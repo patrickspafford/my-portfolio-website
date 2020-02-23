@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import InfoModal from './InfoModal';
-import { IconButton, AppBar, Drawer, List, ListItem, FormControlLabel, Switch,
-  createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core';
+import { IconButton, AppBar, Drawer, List, ListItem, FormControlLabel, Switch, withStyles } from '@material-ui/core';
 import './Header.css'
 import { Info, GitHub, Book, ContactMail, Code, SportsHandball,
-  AccountTree, Description, Home, LinkedIn, Menu, SentimentSatisfied} from '@material-ui/icons'
+  AccountTree, Description, Home, LinkedIn, Menu} from '@material-ui/icons'
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -17,9 +16,11 @@ const StyledAppBar = withStyles({
 const StyledIconButton = withStyles({
 root: {
   borderRadius: '0%',
-  color: '#eee'
+  color: '#eee',
+  marginLeft: '65px'
 }
 })(IconButton)
+
 
 const StyledDrawer = withStyles({
   paper: {
@@ -56,7 +57,7 @@ const navBarItems = [
   {
     name: "Contact Me",
     icon: <ContactMail style={{padding: '15px'}}/>,
-    href: "/resume"
+    href: "mailto:patrickspafford1@gmail.com"
   },
   {
     name: "Coding Projects",
@@ -94,10 +95,7 @@ return ([
                 <StyledIconButton onClick={() => setOpen(true)}>
                   <Menu/>
                 </StyledIconButton>
-                <StyledIconButton
-                href="https://github.com/patrickspafford"
-                target="_blank"
-                rel="noopener noreferrer">
+                <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
                     <GitHub />
                   </StyledIconButton>
                   <StyledIconButton size="small" href="/">
@@ -106,7 +104,9 @@ return ([
               <StyledIconButton onClick={() => setInfoModal(!infoModal)}>
                 <Info />
               </StyledIconButton>
+              <StyledIconButton size="small">
               <FormControlLabel label="Dark Mode" control={<StyledSwitch onChange={() => toggleDarkMode} />} />
+              </StyledIconButton>
             </div>
           </StyledAppBar>  
       </ header>,
@@ -117,7 +117,7 @@ return ([
             {Object.values(navBarItems).map((navBarItem, i) => {
               return (
               <ListItem key={navBarItem.name} style={{borderBottom: i === 0 ? '2px solid white' : undefined}}>
-                 <StyledIconButton size="small" href={navBarItem.href}>
+                 <StyledIconButton size="small" style={{margin: '0px'}} href={navBarItem.href}>
                  {navBarItem.icon}
                  {navBarItem.name}
                  </StyledIconButton>
