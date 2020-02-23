@@ -76,7 +76,7 @@ const cardData = [
     image: ProfessionalPhoto,
     buttons: ["Explore", "Download pdf"],
     href: '/resume',
-    buttonRefs: ['/resume', Resume],
+    buttonRefs: [Resume, Resume],
     download: [false, 'PatrickSpaffordResume']
 },
 {

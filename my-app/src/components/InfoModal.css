@@ -2,3 +2,10 @@
 width: 50%;
 margin: 0 auto;
 }
+.paper {
+    text-align: center;
+    padding: 12px;
+}
+.paragraph {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

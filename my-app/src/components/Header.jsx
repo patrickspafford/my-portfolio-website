@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import InfoModal from './InfoModal';
-import { IconButton, AppBar, Drawer, List, ListItem, FormControlLabel, Switch, withStyles } from '@material-ui/core';
+import { IconButton, AppBar, Drawer, Tooltip, List, ListItem, FormControlLabel, Switch, withStyles } from '@material-ui/core';
 import './Header.css'
 import { Info, GitHub, Book, ContactMail, Code, SportsHandball,
   AccountTree, Description, Home, LinkedIn, Menu} from '@material-ui/icons'
@@ -92,18 +92,24 @@ return ([
       <header>
           <StyledAppBar position='fixed'>
             <div className='appBar'>
+              <Tooltip title='Menu'>
                 <StyledIconButton onClick={() => setOpen(true)}>
                   <Menu/>
                 </StyledIconButton>
+              </Tooltip>
+              <Tooltip title='GitHub'>
                 <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
                     <GitHub />
                   </StyledIconButton>
+              </Tooltip>
                   <StyledIconButton size="small" href="/">
                     <p>Patrick Spafford's Portfolio</p>
                   </StyledIconButton>
-              <StyledIconButton onClick={() => setInfoModal(!infoModal)}>
-                <Info />
-              </StyledIconButton>
+              <Tooltip title='Info'>
+                <StyledIconButton onClick={() => setInfoModal(!infoModal)}>
+                  <Info />
+                </StyledIconButton>
+              </Tooltip>
               <StyledIconButton size="small">
               <FormControlLabel label="Dark Mode" control={<StyledSwitch onChange={() => toggleDarkMode} />} />
               </StyledIconButton>
