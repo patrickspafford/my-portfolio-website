@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from '@material-ui/core';
+import { Card, CardHeader, CardMedia, CardContent, CardActions, 
+ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export default function BookshelfPage() {
