@@ -1,19 +1,28 @@
 import React from 'react';
 import Header from '../components/Header';
-import { Card, CardHeader, CardMedia, CardContent, CardActions, 
-ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, Card, CardHeader, CardMedia, CardContent } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
 
 export default function BookshelfPage() {
 
     const expansionPanels = [
         {
             title: "Notable Audiobooks",
-            content: "Placeholder..."
+            content: "Placeholder...",
+            books: [
+                {
+                    title: "She Has Her Mother's Laugh",
+                    description: "A book on genetics",
+                    img: SHHML
+                },
+                
+            ]
         },
         {
             title: "Notable Printed Books",
-            content: "Other books..."
+            content: "Other books...",
+            books: []
         }
     ]
     return(
@@ -23,12 +32,23 @@ export default function BookshelfPage() {
                 return (
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>{expansionPanel.title}</Typography>
+                        <Typography>
+                        {expansionPanel.title}
+                        </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <Typography>
-                        {expansionPanel.content}
-                        </Typography>
+                        {expansionPanel.books.map(book => {
+                            return (
+                            <Card>
+                                <CardHeader title={book.title} />
+                                <CardMedia image={book.img} />
+                                <CardContent>
+                                    {book.description}
+                                </CardContent>
+                            </Card>
+                            )
+                        })}
+                        
                     </ExpansionPanelDetails>
                 </ExpansionPanel>)
             })}  
