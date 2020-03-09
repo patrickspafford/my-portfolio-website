@@ -1,12 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
 import Book from '../components/Book';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, Card, CardHeader, CardMedia, CardContent } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
 
 export default function BookshelfPage() {
-
     const expansionPanels = [
         {
             title: "Notable Audiobooks",
@@ -34,7 +33,7 @@ export default function BookshelfPage() {
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>
-                        {expansionPanel.title}
+                            {expansionPanel.title}
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
