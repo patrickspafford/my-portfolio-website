@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Book from '../components/Book';
 import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, Card, CardHeader, CardMedia, CardContent } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
@@ -26,7 +27,7 @@ export default function BookshelfPage() {
         }
     ]
     return(
-        <div>
+        <div style={{overflow: 'scroll'}}>
             <Header AppBarStyle="static" />
             {expansionPanels.map(expansionPanel => {
                 return (
@@ -37,18 +38,8 @@ export default function BookshelfPage() {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        {expansionPanel.books.map(book => {
-                            return (
-                            <Card>
-                                <CardHeader title={book.title} />
-                                <CardMedia image={book.img} />
-                                <CardContent>
-                                    {book.description}
-                                </CardContent>
-                            </Card>
-                            )
-                        })}
-                        
+                        {expansionPanel.books.map(book =>
+                        <Book title={book.title} image={book.img} desc={book.description} />)}   
                     </ExpansionPanelDetails>
                 </ExpansionPanel>)
             })}  
