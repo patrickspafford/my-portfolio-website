@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import HomeCard from '../components/HomeCard';
+import HomeCard from './HomeCard';
 import Hobbies from '../pictures/Hobbies.jpg';
 import ProjectsImage from '../pictures/ProjectsImage.png';
 import ProfessionalPhoto from '../pictures/professionalPhoto.jpg';
@@ -51,12 +51,14 @@ const cardData = [
     buttonRefs: ['/bookshelf', ''],
     download: [false, 'PatrickSpaffordBookshelf']
 }]
+
 return (
 <div style={{paddingTop: '60px'}}>
 <StyledGrid container={true} justify="space-evenly">
     {cardData.map(card => (
         <HomeCard
         href={card.href}
+        key={card.href}
         image={card.image}
         buttons={card.buttons}
         title={card.title}
@@ -64,7 +66,7 @@ return (
         download={card.download}
         />
     ))}
-</ StyledGrid>
+</StyledGrid>
 </div>
 
 )
