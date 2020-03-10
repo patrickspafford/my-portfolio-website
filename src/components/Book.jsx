@@ -38,7 +38,8 @@ root: {
 
 const StyledCard = withStyles({
     root: {
-        width: '350px'
+        width: '350px',
+        height: '275px'
     }
 })(Card);
 
@@ -48,7 +49,7 @@ export default function Book({title, image, desc}) {
         <StyledCard>
             <StyledCardHeader title={title} />
             <StyledCardContent>
-                <StyledCardMedia image={image} height='150px' component='img'/>
+                <StyledCardMedia image={image} height='175px' component='img'/>
             </StyledCardContent>
         </StyledCard>
         <ExpansionPanel>
