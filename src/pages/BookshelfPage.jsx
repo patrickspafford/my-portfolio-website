@@ -86,7 +86,13 @@ export default function BookshelfPage() {
         },
         {
             title: "Notable Printed Books",
-            books: []
+            books: [
+                {
+                    title: "Where Good Ideas Come From",
+                    description: "",
+                    img: ""
+                }
+            ]
         }
     ]
     return(
