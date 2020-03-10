@@ -30,7 +30,7 @@ const StyledSwitch = withStyles({
   }
 })(Switch);
 
-export default function Header({AppBarStyle}) {
+export default function Header() {
 const [open, setOpen] = useState(false);
 const [darkMode, setDarkMode] = useState(false);
 const [infoModal, setInfoModal] = useState(false);
@@ -38,8 +38,8 @@ const toggleDarkMode = () => {
   setDarkMode(!darkMode);
 }
 return ([
-      <header>
-          <StyledAppBar position={AppBarStyle}>
+      <header key='header'>
+          <StyledAppBar>
             <div className='appBar'>
               <Tooltip title='Menu'>
                 <StyledIconButton onClick={() => setOpen(true)}>
@@ -65,6 +65,6 @@ return ([
             </div>
           </StyledAppBar>  
       </ header>,
-      <InfoModal open={infoModal} close={() => setInfoModal(false)} />,
-      <LeftDrawer drawerOpen={open} handleDrawerClose={() => setOpen(false)} />
+      <InfoModal key='InfoModal' open={infoModal} close={() => setInfoModal(false)} />,
+      <LeftDrawer key='LeftDrawer' drawerOpen={open} handleDrawerClose={() => setOpen(false)} />
 ])};

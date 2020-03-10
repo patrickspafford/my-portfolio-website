@@ -61,7 +61,7 @@ return (
         <List>
           {navBarData.map((navBarItem, i) => {
             return (
-              <NavBarButton icon={navBarItem.icon} name={navBarItem.name} href={navBarItem.href} isBorderBottom={i === 0} />
+              <NavBarButton icon={navBarItem.icon} key={navBarItem.name} name={navBarItem.name} href={navBarItem.href} isBorderBottom={i === 0} />
             )
           })}
         </List>

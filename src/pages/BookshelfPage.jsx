@@ -26,11 +26,11 @@ export default function BookshelfPage() {
         }
     ]
     return(
-        <div style={{overflow: 'scroll'}}>
+        <div style={{overflow: 'scroll', paddingTop: '80px'}}>
             <Header AppBarStyle="static" />
-            {expansionPanels.map(expansionPanel => {
+            {expansionPanels.map((expansionPanel, i) => {
                 return (
-                <ExpansionPanel>
+                <ExpansionPanel key={i}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>
                             {expansionPanel.title}
@@ -38,7 +38,7 @@ export default function BookshelfPage() {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                         {expansionPanel.books.map(book =>
-                        <Book title={book.title} image={book.img} desc={book.description} />)}   
+                        <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}   
                     </ExpansionPanelDetails>
                 </ExpansionPanel>)
             })}  
