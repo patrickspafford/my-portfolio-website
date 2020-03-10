@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Book from '../components/Book';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Typography, createMuiTheme, ThemeProvider} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Icon, Typography, createMuiTheme, ThemeProvider} from '@material-ui/core';
+import {ExpandMore, GraphicEq, MenuBook } from '@material-ui/icons';
 import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
 import algorithms from '../pictures/algorithms.jpg';
 import happinessHypothesis from '../pictures/happinessHypothesis.jpg';
@@ -34,6 +35,7 @@ export default function BookshelfPage() {
     const expansionPanels = [
         {
             title: "Notable Audiobooks",
+            icon: <GraphicEq />,
             books: [
                 {
                     title: "She Has Her Mother's Laugh",
@@ -91,53 +93,58 @@ export default function BookshelfPage() {
         },
         {
             title: "Notable Printed Books",
+            icon: <MenuBook />,
             books: [
                 {
                     title: "Where Good Ideas Come From",
-                    description: "",
+                    description: "A fascinating deep dive on innovation from the New York Times bestselling author of How We Got To Now and Farsighted The printing press, the pencil, the flush toilet, the battery--these are all great ideas. But where do they come from? What kind of environment breeds them? What sparks the flash of brilliance? How do we generate the breakthrough technologies that push forward our lives, our society, our culture? Steven Johnson's answers are revelatory as he identifies the seven key patterns behind genuine innovation, and traces them across time and disciplines. From Darwin and Freud to the halls of Google and Apple, Johnson investigates the innovation hubs throughout modern time and pulls out the approaches and commonalities that seem to appear at moments of originality",
                     img: WhereGoodIdeasComeFrom
                 },
                 {
                     title: "Ther Personal MBA",
-                    description: "",
+                    description: "Getting an MBA is an expensive choice - one almost impossible to justify regardless of the state of the economy. Even the elite schools like Harvard and Wharton offer outdated, assembly-line programs that teach you more about PowerPoint presentations and unnecessary financial models than what it takes to run a real business. You can get better results (and save hundreds of thousands of dollars) by skipping business school altogether....Josh Kaufman founded PersonalMBA.com as an alternative to the business school boondoggle. His blog has introduced hundreds of thousands of readers to the best business books and most powerful business concepts of all time. Now, he shares the essentials of entrepreneurship, marketing, sales, negotiation, operations, productivity, systems design, and much more, in one comprehensive volume. The Personal MBA distills the most valuable business lessons into simple, memorable mental models that can be applied to real-world challenges. True leaders aren't made by business schools - they make themselves, seeking out the knowledge, skills, and experience they need to succeed. Read this book and you will learn the principles it takes most business professionals a lifetime of trial and error to master.",
                     img: PersonalMBA
                 },
                 {
                     title: "The Moral Landscape",
-                    description: "",
+                    description: "The Moral Landscape: How Science Can Determine Human Values is a 2010 book by Sam Harris, in which the author promotes a science of morality and argues that many thinkers have long confused the relationship between morality, facts, and science. He aims to carve a third path between secularists who say morality is subjective (e.g. moral relativists), and religionists who say that morality is given by God and scripture. Harris contends that the only moral framework worth talking about is one where \"morally good\" things pertain to increases in the \"well-being of conscious creatures\". He then argues that, problems with philosophy of science and reason in general notwithstanding, 'moral questions' will have objectively right and wrong answers which are grounded in empirical facts about what causes people to flourish.",
                     img: TheMoralLandscape
                 },
                 {
                     title: "12 Rules for Life",
-                    description: "",
+                    description: "Humorous, surprising and informative, Dr. Peterson tells us why skateboarding boys and girls must be left alone, what terrible fate awaits those who criticize too easily, and why you should always pet a cat when you meet one on the street. What does the nervous system of the lowly lobster have to tell us about standing up straight (with our shoulders back) and about success in life? Why did ancient Egyptians worship the capacity to pay careful attention as the highest of gods? What dreadful paths do people tread when they become resentful, arrogant and vengeful? Dr. Peterson journeys broadly, discussing discipline, freedom, adventure and responsibility, distilling the world's wisdom into 12 practical and profound rules for life. 12 Rules for Life shatters the modern commonplaces of science, faith and human nature, while transforming and ennobling the mind and spirit of its readers.",
                     img: RulesForLife
                 }
             ]
         }
     ]
     return(
-        <div style={{overflow: 'scroll', paddingTop: '80px'}}>
+        <>
             <Header />
             {expansionPanels.map((expansionPanel, i) => {
                 return (
-            <ThemeProvider theme={theme}>
-                <ExpansionPanel key={i}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>
-                            {expansionPanel.title}
-                        </Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Grid container={true}>
-                        {expansionPanel.books.map(book =>
-                        <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
-                        </Grid>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-                </ThemeProvider>
+                        <ThemeProvider theme={theme} key={i}>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+                                    <Icon style={{marginRight: '10px'}}>
+                                    {expansionPanel.icon}
+                                    </Icon>
+                                    <Typography>
+                                        {expansionPanel.title}
+                                    </Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container={true}>
+                                    {expansionPanel.books.map(book =>
+                                    <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                        </ThemeProvider>
                 )
-            })}  
+            })} 
+            <Footer /> 
             
-        </div>
+        </>
     )
 }

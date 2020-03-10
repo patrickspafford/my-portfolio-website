@@ -17,7 +17,6 @@ const StyledIconButton = withStyles({
 root: {
   borderRadius: '0%',
   color: '#eee',
-  marginLeft: '65px'
 }
 })(IconButton)
 
@@ -38,8 +37,7 @@ const toggleDarkMode = () => {
   setDarkMode(!darkMode);
 }
 return ([
-      <header key='header'>
-          <StyledAppBar>
+          <StyledAppBar key='appBar' position='sticky'>
             <div className='appBar'>
               <Tooltip title='Menu'>
                 <StyledIconButton onClick={() => setOpen(true)}>
@@ -63,8 +61,7 @@ return ([
               <FormControlLabel label="Dark Mode" control={<StyledSwitch onChange={() => toggleDarkMode} />} />
               </StyledIconButton>
             </div>
-          </StyledAppBar>  
-      </ header>,
+          </StyledAppBar>,
       <InfoModal key='InfoModal' open={infoModal} close={() => setInfoModal(false)} />,
       <LeftDrawer key='LeftDrawer' drawerOpen={open} handleDrawerClose={() => setOpen(false)} />
 ])};

@@ -8,12 +8,10 @@ margin: 0 auto;
 }
 .paragraph {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: black;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 .infoModalTitle {
-    background-color: black;
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 2em;

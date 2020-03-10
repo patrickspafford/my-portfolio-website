@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardMedia, CardContent, withStyles, Typography, ExpansionPanel, ExpansionPanelSummary,
+import { Card, CardHeader, CardMedia, CardContent, withStyles, ExpansionPanel, ExpansionPanelSummary,
 ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 

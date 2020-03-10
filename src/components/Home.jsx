@@ -6,6 +6,7 @@ import ProjectsImage from '../pictures/ProjectsImage.png';
 import ProfessionalPhoto from '../pictures/professionalPhoto.jpg';
 import BookImage from '../pictures/SheHasHerMothersLaugh.jpg';
 import Resume from '../pictures/Resume.pdf'
+import Bookshelf from '../pictures/BookshelfList.pdf'
 import { withStyles } from '@material-ui/core';
 import './HomePage.css';
 
@@ -48,12 +49,11 @@ const cardData = [
     image: BookImage,
     buttons: ["Explore", "Download List"],
     href: '/bookshelf',
-    buttonRefs: ['/bookshelf', ''],
+    buttonRefs: ['/bookshelf', Bookshelf],
     download: [false, 'PatrickSpaffordBookshelf']
 }]
 
 return (
-<div style={{paddingTop: '60px'}}>
 <StyledGrid container={true} justify="space-evenly">
     {cardData.map(card => (
         <HomeCard
@@ -67,7 +67,6 @@ return (
         />
     ))}
 </StyledGrid>
-</div>
 
 )
 

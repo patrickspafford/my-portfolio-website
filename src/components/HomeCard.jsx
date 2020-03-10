@@ -4,9 +4,7 @@ import { Card, CardActionArea, CardMedia, CardContent, CardActions, Button, with
 const StyledCard = withStyles({
     root: {
         width: '35%',
-        marginTop: '10px',
-        marginRight: '10px',
-        marginLeft: '10px',
+        margin: '10px',
         border: '2px solid white',
         backgroundColor: '#6d8fa1',
         minWidth: '300px',
