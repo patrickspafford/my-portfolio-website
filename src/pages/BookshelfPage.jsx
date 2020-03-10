@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Book from '../components/Book';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, createMuiTheme, ThemeProvider} from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Typography, createMuiTheme, ThemeProvider} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
 import algorithms from '../pictures/algorithms.jpg';
@@ -13,6 +13,11 @@ import MapsOfMeaning from '../pictures/mapsOfMeaning.jpg';
 import Mengele from '../pictures/mengele.jpg';
 import Attached from '../pictures/attached.jpg';
 import Sourdough from '../pictures/sourdough.jpg';
+import WhereGoodIdeasComeFrom from '../pictures/WhereGoodIdeasComeFrom.jpg';
+import PersonalMBA from '../pictures/PersonalMBA.jpg';
+import TheMoralLandscape from '../pictures/TheMoralLandscape.png';
+import RulesForLife from '../pictures/RulesForLife.jpg';
+
 const theme = createMuiTheme({
     overrides: {
       MuiCollapse: {
@@ -90,14 +95,29 @@ export default function BookshelfPage() {
                 {
                     title: "Where Good Ideas Come From",
                     description: "",
-                    img: ""
+                    img: WhereGoodIdeasComeFrom
+                },
+                {
+                    title: "Ther Personal MBA",
+                    description: "",
+                    img: PersonalMBA
+                },
+                {
+                    title: "The Moral Landscape",
+                    description: "",
+                    img: TheMoralLandscape
+                },
+                {
+                    title: "12 Rules for Life",
+                    description: "",
+                    img: RulesForLife
                 }
             ]
         }
     ]
     return(
         <div style={{overflow: 'scroll', paddingTop: '80px'}}>
-            <Header AppBarStyle="static" />
+            <Header />
             {expansionPanels.map((expansionPanel, i) => {
                 return (
             <ThemeProvider theme={theme}>
@@ -108,13 +128,16 @@ export default function BookshelfPage() {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
+                        <Grid container={true}>
                         {expansionPanel.books.map(book =>
                         <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
+                        </Grid>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 </ThemeProvider>
                 )
             })}  
+            
         </div>
     )
 }

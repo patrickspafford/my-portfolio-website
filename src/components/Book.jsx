@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardMedia, CardContent, withStyles, ExpansionPanel, ExpansionPanelSummary,
+import { Card, CardHeader, CardMedia, CardContent, withStyles, Typography, ExpansionPanel, ExpansionPanelSummary,
 ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -26,6 +26,9 @@ const StyledCardHeader = withStyles({
     root: {
         backgroundColor: '#142630',
         color: 'white'
+    },
+    title: {
+        fontSize: '1rem'
     }
 })(CardHeader);
 
@@ -43,23 +46,29 @@ const StyledCard = withStyles({
     }
 })(Card);
 
+const StyledExpansionPanel = withStyles({
+    root: {
+        width: '350px'
+    }
+})(ExpansionPanel);
+
 export default function Book({title, image, desc}) {
     return (
-        <div style={{margin: '25px'}}>
+        <div style={{margin: '15px'}}>
         <StyledCard>
-            <StyledCardHeader title={title} />
+            <StyledCardHeader title={title} style={{textOverflow: 'ellipsis'}} />
             <StyledCardContent>
                 <StyledCardMedia image={image} height='175px' component='img'/>
             </StyledCardContent>
         </StyledCard>
-        <ExpansionPanel>
+        <StyledExpansionPanel>
             <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
                 <p>About</p>
             </StyledExpansionPanelSummary>
-            <ExpansionPanelDetails>
+            <ExpansionPanelDetails style={{height: '300px'}}>
                 <p>{desc}</p>
             </ExpansionPanelDetails>
-        </ExpansionPanel>
+        </StyledExpansionPanel>
         </div>
     )
 }
