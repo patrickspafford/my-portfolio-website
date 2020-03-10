@@ -15,7 +15,7 @@ const StyledCardMedia = withStyles({
     })(CardMedia);
 const StyledCardContent = withStyles({
     root: {
-        backgroundColor: '#eee'
+        backgroundColor: 'cornflowerBlue'
     }
 })(CardContent);
 
@@ -36,19 +36,22 @@ const StyledExpansionPanelSummary = withStyles({
 root: {
     backgroundColor: '#142630',
     color: 'white'
+},
+content: {
+    margin: 0
 }
 })(ExpansionPanelSummary);
 
 const StyledCard = withStyles({
     root: {
-        width: '350px',
-        height: '275px'
+        width: '260px',
+        height: '275px',
     }
 })(Card);
 
 const StyledExpansionPanel = withStyles({
     root: {
-        width: '350px'
+        width: '260px'
     }
 })(ExpansionPanel);
 

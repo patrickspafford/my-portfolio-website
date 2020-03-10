@@ -17,6 +17,8 @@ const StyledIconButton = withStyles({
 root: {
   borderRadius: '0%',
   color: '#eee',
+  paddingHorizontal: '36px',
+  marginHorizontal: '24px'
 }
 })(IconButton)
 
