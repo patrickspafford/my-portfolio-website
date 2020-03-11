@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    background: 'linear-gradient(180deg, #182062, #eee)'
+    background: 'linear-gradient(180deg, #424486, #eee)'
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -32,6 +32,18 @@ const StyledButton = withStyles({
   }
   })(Button);
 
+const StyledStepper = withStyles({
+  root: {
+    backgroundColor: 'transparent'
+  }
+})(Stepper);
+
+const StyledStepLabel = withStyles({
+  root: {
+    color: 'black'
+  }
+})(StepLabel);
+
 function getSteps() {
   return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
@@ -41,8 +53,8 @@ function getStepContent(stepIndex) {
     case 0:
       return (
       <>
-      <GifPlayer gif={Welcome} still={Welcome} />
-      <p>Welcome to a tour of some of my notable coding projects.</p>
+      <h3>Welcome to a tour of some of my notable coding projects.</h3>
+      <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
       </>
       );
     case 1:
@@ -80,13 +92,13 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <StyledStepper activeStep={activeStep} alternativeLabel>
         {steps.map(label => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StyledStepLabel>{label}</StyledStepLabel>
           </Step>
         ))}
-      </Stepper>
+      </StyledStepper>
       <div>
         {activeStep === steps.length ? (
           <div>
