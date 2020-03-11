@@ -1,17 +1,13 @@
 import React from 'react';
 import GifPlayer from 'react-gif-player';
 import ProjectContent from './ProjectContent';
-import { makeStyles, withStyles, ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import { makeStyles, withStyles, Button, Typography, StepLabel, Step, Stepper } from '@material-ui/core';
 import Welcome from '../../pictures/welcome.gif';
 import CardholderVideo from '../../pictures/CardholdersVideoGood.mov';
 import CardholderVideo2 from '../../pictures/CardholdersBad.mp4';
 import blackPoster from '../../pictures/blackPoster.jpg';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import CardholderProcessor from '../../pictures/CardholderProcessor.txt';
+import BlueDiamondCardholder from '../../pictures/BlueDiamondCardholder.txt';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,29 +45,28 @@ const StyledStepLabel = withStyles({
   }
 })(StepLabel);
 
-const StyledExpansionPanelSummary = withStyles({
-  root: {
-      backgroundColor: '#142630',
-      color: 'white'
-  },
-  content: {
-      margin: 0
-  }
-  })(ExpansionPanelSummary);
-
-  const StyledExpansionPanel = withStyles({
-    root: {
-        backgroundColor: '#142630',
-        color: 'white',
-        marginTop: '1px',
-        marginBottom: '1px'
-    }
-})(ExpansionPanel);
-
 function getSteps() {
   return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
 
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    var allText;
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status === 0)
+            {
+                allText = rawFile.responseText;
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText
+}
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
@@ -85,10 +80,12 @@ function getStepContent(stepIndex) {
       return (
         <ProjectContent
           title='Cardholder Processor in Java (Fall 2018)'
-          description="A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond cardholders and a section for invalid transactions."
-          panelTitles={['Sample Code', 'Demo Videos']}
+          description="A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond card and a section for invalid transactions."
+          panelTitles={['Sample Code: CardholderProcessor.java and BlueDiamondCardholder', 'Demo Videos']}
           videos={[CardholderVideo, CardholderVideo2]}
           poster={blackPoster}
+          sampleCode={[readTextFile(CardholderProcessor), readTextFile(BlueDiamondCardholder)]}
+          language='java'
           />
           )
         case 2:

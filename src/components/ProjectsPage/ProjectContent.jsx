@@ -13,27 +13,40 @@ const StyledExpansionPanelSummary = withStyles({
     }
     })(ExpansionPanelSummary);
   
-    const StyledExpansionPanel = withStyles({
-      root: {
-          backgroundColor: '#142630',
-          color: 'white',
-          marginTop: '1px',
-          marginBottom: '1px'
-      }
-  })(ExpansionPanel);
+const StyledExpansionPanel = withStyles({
+    root: {
+        backgroundColor: '#142630',
+        color: 'white',
+        marginTop: '1px',
+        marginBottom: '1px'
+    }
+})(ExpansionPanel);
 
-export default function ProjectContent({title, description, panelTitles, videos, poster, language, code}) {
+const StyledExpansionPanelDetails = withStyles({
+    root: {
+        display: 'block'
+    }
+})(ExpansionPanelDetails);
+
+export default function ProjectContent({title, description, panelTitles, videos, poster, language, sampleCode}) {
     return (
         <>
         <h3>{title}</h3>
         <p>{description}</p>
         <StyledExpansionPanel>
-            <StyledExpansionPanelSummary>
+            <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
                 <h3>{panelTitles[0]}</h3>
             </StyledExpansionPanelSummary>
-            <ExpansionPanelDetails>
-                <CodeBlock language='java' text='public static void' />
-            </ExpansionPanelDetails>
+            <StyledExpansionPanelDetails>
+                <div type='row' style={{textAlign: 'left', display: 'flex'}}>
+                    <div type='column'>
+                        <CodeBlock  language={language} text={sampleCode[0]}/>
+                    </div>
+                    <div type='column'>
+                        <CodeBlock language={language} text={sampleCode[1]} />
+                    </div>
+                </div>
+            </StyledExpansionPanelDetails>
         </StyledExpansionPanel>
         <StyledExpansionPanel>
           <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
@@ -41,8 +54,8 @@ export default function ProjectContent({title, description, panelTitles, videos,
           </StyledExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div type='container'>
-              <video muted controls poster={poster} src={videos[0]} height='280px' width='400px' style={{margin: '20px'}}/>
-              <video muted controls poster={poster} src={videos[1]} height='280px' width='400px' style={{margin: '20px'}}/>
+              <video muted controls poster={poster} src={videos[0]} height='250px' width='370px' style={{margin: '20px'}}/>
+              <video muted controls poster={poster} src={videos[1]} height='250px' width='370px' style={{margin: '20px'}}/>
             </div>
           </ExpansionPanelDetails>
         </StyledExpansionPanel>
