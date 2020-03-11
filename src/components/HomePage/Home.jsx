@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import HomeCard from './HomeCard';
-import Hobbies from '../pictures/Hobbies.jpg';
-import ProjectsImage from '../pictures/ProjectsImage.png';
-import ProfessionalPhoto from '../pictures/professionalPhoto.jpg';
-import BookImage from '../pictures/SheHasHerMothersLaugh.jpg';
-import Resume from '../pictures/Resume.pdf'
-import Bookshelf from '../pictures/BookshelfList.pdf'
+import Hobbies from '../../pictures/Hobbies.jpg';
+import ProjectsImage from '../../pictures/ProjectsImage.png';
+import ProfessionalPhoto from '../../pictures/professionalPhoto.jpg';
+import BookImage from '../../pictures/SheHasHerMothersLaugh.jpg';
+import Resume from '../../pictures/Resume.pdf'
+import Bookshelf from '../../pictures/BookshelfList.pdf'
 import { withStyles } from '@material-ui/core';
 import './HomePage.css';
 

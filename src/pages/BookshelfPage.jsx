@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Book from '../components/Book';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Icon, Typography, createMuiTheme, ThemeProvider} from '@material-ui/core';
+import Book from '../components/BookShelfPage/Book';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Icon, Typography, createMuiTheme, ThemeProvider, withStyles} from '@material-ui/core';
 import {ExpandMore, GraphicEq, MenuBook } from '@material-ui/icons';
 import SHHML from '../pictures/SheHasHerMothersLaugh.jpg';
 import algorithms from '../pictures/algorithms.jpg';
@@ -31,6 +31,21 @@ const theme = createMuiTheme({
       },
     },
   });
+const StyledExpansionPanelDetails = withStyles({
+    root: {
+        background: 'linear-gradient(0deg, white, #404183);'
+    }
+})(ExpansionPanelDetails);
+
+const StyledExpansionPanel = withStyles({
+    root: {
+        backgroundColor: '#142630',
+        color: 'white',
+        marginTop: '1px',
+        marginBottom: '1px'
+    }
+})(ExpansionPanel);
+
 export default function BookshelfPage() {
     const expansionPanels = [
         {
@@ -120,12 +135,12 @@ export default function BookshelfPage() {
     ]
     return(
         <>
-            <Header />
+            <Header style={{marginBottom: '10px'}} />
             {expansionPanels.map((expansionPanel, i) => {
                 return (
                         <ThemeProvider theme={theme} key={i}>
-                            <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+                            <StyledExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMore style={{color: 'white'}}/>}>
                                     <Icon style={{marginRight: '10px'}}>
                                     {expansionPanel.icon}
                                     </Icon>
@@ -133,13 +148,13 @@ export default function BookshelfPage() {
                                         {expansionPanel.title}
                                     </Typography>
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
+                                <StyledExpansionPanelDetails>
                                     <Grid container={true}>
                                     {expansionPanel.books.map(book =>
                                     <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
                                     </Grid>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+                                </StyledExpansionPanelDetails>
+                            </StyledExpansionPanel>
                         </ThemeProvider>
                 )
             })} 

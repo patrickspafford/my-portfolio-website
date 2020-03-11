@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, withStyles, IconButton } from '@material-ui/core';
+import { AppBar, withStyles } from '@material-ui/core';
 
 const StyledAppBar = withStyles({
     colorPrimary: 
