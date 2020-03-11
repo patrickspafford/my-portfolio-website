@@ -6,7 +6,7 @@ const StyledCard = withStyles({
         width: '35%',
         margin: '10px',
         border: '2px solid white',
-        backgroundColor: '#6d8fa1',
+        backgroundColor: '#142630',
         minWidth: '300px',
         maxWidth: '700px',
     }
