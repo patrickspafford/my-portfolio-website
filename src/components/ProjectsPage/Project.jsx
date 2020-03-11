@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -19,19 +19,35 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const StyledButton = withStyles({
+  label: {
+      border: '1px solid white',
+      borderRadius: '5px',
+      padding: '10px',
+      backgroundColor: '#142630',
+      color: 'white'
+  }
+  })(Button);
+
 function getSteps() {
-  return ['Java I:', 'Java II: ', ''];
+  return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)', 'This Website (React.js)'];
 }
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Select campaign settings...';
+      return 'Welcome to a tour of some of my notable coding projects.';
     case 1:
-      return 'What is an ad group anyways?';
+      return 'A program that reads a text file and outputs information about Sapphire, Diamond, and BlueDiamond Cardholders.';
     case 2:
-      return 'This is the bit I really care about!';
-    default:
+      return 'A Java program that takes in an n x n matrix of letters and uses a depth-first search approach to find every word on the board (consistent with the rules of Boggle).';
+    case 3:
+      return 'The same Boggle program, except written in Python!'
+    case 4:
+      return 'A little C++ game that simulates a duel between players of different accuracies.'
+    case 5:
+      return 'The very website you are on right now! Written in React.js'
+      default:
       return 'Unknown stepIndex';
   }
 }
@@ -40,7 +56,6 @@ export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
   };
@@ -65,23 +80,22 @@ export default function HorizontalLabelPositionBelowStepper() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed</Typography>
+            <Typography className={classes.instructions}>All steps completed.</Typography>
             <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (
-          <div>
+          <div style={{textAlign: 'center'}}>
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
-              <Button
+              <StyledButton
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                className={classes.backButton}
               >
                 Back
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+              </StyledButton>
+              <StyledButton onClick={handleNext}>
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next Project'}
+              </StyledButton>
             </div>
           </div>
         )}
