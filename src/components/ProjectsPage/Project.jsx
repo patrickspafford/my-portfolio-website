@@ -1,17 +1,22 @@
 import React from 'react';
 import GifPlayer from 'react-gif-player';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import ProjectContent from './ProjectContent';
+import { makeStyles, withStyles, ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Welcome from '../../pictures/welcome.gif';
+import CardholderVideo from '../../pictures/CardholdersVideoGood.mov';
+import CardholderVideo2 from '../../pictures/CardholdersBad.mp4';
+import blackPoster from '../../pictures/blackPoster.jpg';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    background: 'linear-gradient(180deg, #424486, #eee)'
+    background: 'linear-gradient(180deg, #eee, #424486)'
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -44,6 +49,25 @@ const StyledStepLabel = withStyles({
   }
 })(StepLabel);
 
+const StyledExpansionPanelSummary = withStyles({
+  root: {
+      backgroundColor: '#142630',
+      color: 'white'
+  },
+  content: {
+      margin: 0
+  }
+  })(ExpansionPanelSummary);
+
+  const StyledExpansionPanel = withStyles({
+    root: {
+        backgroundColor: '#142630',
+        color: 'white',
+        marginTop: '1px',
+        marginBottom: '1px'
+    }
+})(ExpansionPanel);
+
 function getSteps() {
   return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
@@ -57,9 +81,17 @@ function getStepContent(stepIndex) {
       <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
       </>
       );
-    case 1:
-      return 'A program that reads a text file and outputs information about Sapphire, Diamond, and BlueDiamond Cardholders.';
-    case 2:
+    case 1: 
+      return (
+        <ProjectContent
+          title='Cardholder Processor in Java (Fall 2018)'
+          description="A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond cardholders and a section for invalid transactions."
+          panelTitles={['Sample Code', 'Demo Videos']}
+          videos={[CardholderVideo, CardholderVideo2]}
+          poster={blackPoster}
+          />
+          )
+        case 2:
       return 'A Java program that takes in an n x n matrix of letters and uses a depth-first search approach to find every word on the board (consistent with the rules of Boggle).';
     case 3:
       return 'The same Boggle program, except written in Python!'
