@@ -46,7 +46,7 @@ const StyledStepLabel = withStyles({
 })(StepLabel);
 
 function getSteps() {
-  return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
+  return ['Welcome', 'Cardholder (Java)', 'WordSearcher (Java)', 'WordSearcher (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
 
 function readTextFile(file)
@@ -89,9 +89,13 @@ function getStepContent(stepIndex) {
           />
           )
         case 2:
-      return 'A Java program that takes in an n x n matrix of letters and uses a depth-first search approach to find every word on the board (consistent with the rules of Boggle).';
+      return (
+        <ProjectContent
+          title='WordSearcher in Java (Spring 2019)'
+          description="A Java program from my second computing class that given a dictionary and an n x n matrix of letters can find every word on the board (consistent with the rules of Boggle) of any specified length or all lengths. If a word is on the board, the program can tell the player the position of that word's letters. If that word is not on the board, that is handled properly."
+      )
     case 3:
-      return 'The same Boggle program, except written in Python!'
+      return 'The same WordSearcher program, except written in Python!'
     case 4:
       return 'A little C++ game that simulates a duel between players of different accuracies.'
     case 5:
