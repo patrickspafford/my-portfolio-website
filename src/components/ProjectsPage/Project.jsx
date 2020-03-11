@@ -1,14 +1,17 @@
 import React from 'react';
+import GifPlayer from 'react-gif-player';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
+import Welcome from '../../pictures/welcome.gif';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    background: 'linear-gradient(180deg, #182062, #eee)'
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -30,13 +33,18 @@ const StyledButton = withStyles({
   })(Button);
 
 function getSteps() {
-  return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)', 'This Website (React.js)'];
+  return ['Welcome', 'Cardholder (Java)', 'Boggle (Java)', 'Boggle (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Welcome to a tour of some of my notable coding projects.';
+      return (
+      <>
+      <GifPlayer gif={Welcome} still={Welcome} />
+      <p>Welcome to a tour of some of my notable coding projects.</p>
+      </>
+      );
     case 1:
       return 'A program that reads a text file and outputs information about Sapphire, Diamond, and BlueDiamond Cardholders.';
     case 2:
@@ -46,6 +54,8 @@ function getStepContent(stepIndex) {
     case 4:
       return 'A little C++ game that simulates a duel between players of different accuracies.'
     case 5:
+      return 'A Ruby parser for a hypothetical programming language with a given tiny grammar.'
+    case 6:
       return 'The very website you are on right now! Written in React.js'
       default:
       return 'Unknown stepIndex';
@@ -85,7 +95,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           </div>
         ) : (
           <div style={{textAlign: 'center'}}>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            {getStepContent(activeStep)}
             <div>
               <StyledButton
                 disabled={activeStep === 0}
@@ -94,7 +104,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 Back
               </StyledButton>
               <StyledButton onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next Project'}
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </StyledButton>
             </div>
           </div>

@@ -17,7 +17,7 @@ return(
                 <h3 className='infoModalTitle'>
                     <b>Welcome, stranger</b>
                 </h3>
-            <img alt="React logo" src={ReactPicture} style={{height: '20%', width: '20%'}} draggable={false} />
+            <img alt="React logo" src={ReactPicture} style={{height: '15%', width: '15%'}} draggable={false} />
             <p className='paragraph'>Hello, my name is Patrick Spafford and welcome to my portfolio website built with React. Feel free to contact me through
              my <a href="mailto:admin@patrickspafford.com">email</a> to schedule an interview or ask any questions that you might have.</p>
         </StyledPaper>
