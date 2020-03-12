@@ -1,7 +1,7 @@
 import React from 'react';
-import ProjectStepper from '../components/ProjectsPage/ProjectStepper';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import ProjectStepper from './ProjectStepper';
+import Header from '../HeaderFooter/Header';
+import Footer from '../HeaderFooter/Footer';
 
 export default function ProjectsPage() {
     return(

@@ -1,23 +1,23 @@
 import React from 'react';
-import Header from '../components/HeaderFooter/Header';
-import Footer from '../components/HeaderFooter/Footer';
-import Book from '../components/BookShelfPage/Book';
+import Header from '../HeaderFooter/Header';
+import Footer from '../HeaderFooter/Footer';
+import Book from './Book';
 import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Grid, Icon, Typography, createMuiTheme, ThemeProvider, withStyles} from '@material-ui/core';
 import {ExpandMore, GraphicEq, MenuBook } from '@material-ui/icons';
-import SHHML from '../assets/SheHasHerMothersLaugh.jpg';
-import algorithms from '../assets/algorithms.jpg';
-import happinessHypothesis from '../assets/happinessHypothesis.jpg';
-import InfinitePowers from '../assets/InfinitePowers.jpg';
-import Range from '../assets/Range.jpg'
-import WhyWeSleep from '../assets/WhyWeSleep.jpg';
-import MapsOfMeaning from '../assets/mapsOfMeaning.jpg';
-import Mengele from '../assets/mengele.jpg';
-import Attached from '../assets/attached.jpg';
-import Sourdough from '../assets/sourdough.jpg';
-import WhereGoodIdeasComeFrom from '../assets/WhereGoodIdeasComeFrom.jpg';
-import PersonalMBA from '../assets/PersonalMBA.jpg';
-import TheMoralLandscape from '../assets/TheMoralLandscape.png';
-import RulesForLife from '../assets/RulesForLife.jpg';
+import SHHML from '../../assets/SheHasHerMothersLaugh.jpg';
+import algorithms from '../../assets/algorithms.jpg';
+import happinessHypothesis from '../../assets/happinessHypothesis.jpg';
+import InfinitePowers from '../../assets/InfinitePowers.jpg';
+import Range from '../../assets/Range.jpg'
+import WhyWeSleep from '../../assets/WhyWeSleep.jpg';
+import MapsOfMeaning from '../../assets/mapsOfMeaning.jpg';
+import Mengele from '../../assets/mengele.jpg';
+import Attached from '../../assets/attached.jpg';
+import Sourdough from '../../assets/sourdough.jpg';
+import WhereGoodIdeasComeFrom from '../../assets/WhereGoodIdeasComeFrom.jpg';
+import PersonalMBA from '../../assets/PersonalMBA.jpg';
+import TheMoralLandscape from '../../assets/TheMoralLandscape.png';
+import RulesForLife from '../../assets/RulesForLife.jpg';
 
 const theme = createMuiTheme({
     overrides: {

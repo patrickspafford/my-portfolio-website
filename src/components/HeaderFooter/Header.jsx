@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InfoModal from '../components/HomePage/InfoModal';
+import InfoModal from '../HomePage/InfoModal';
 import LeftDrawer from './LeftDrawer';
 import { IconButton, AppBar, Tooltip, FormControlLabel, Switch, withStyles } from '@material-ui/core';
 import './Header.css'
