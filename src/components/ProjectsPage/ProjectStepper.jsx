@@ -91,7 +91,7 @@ const projects = [
   },
   {
     title: 'Portfolio Website in React (Spring 2020)',
-    description: "Thank you for taking a tour of my coding projects. Was an honor.",
+    description: "The sample code is a high-level view of the Homepage's cards.\nThank you for taking a tour of my coding projects. Was an honor.",
     panelTitle: 'SampleCode: HomeCard.jsx',
     videos: [],
     sampleCode: [readTextFile(HomeCard)],
@@ -120,7 +120,7 @@ function readTextFile(file)
     rawFile.send(null);
     return allText
 }
-export default function Project() {
+export default function ProjectStepper() {
   const classes = useStyles();
   const steps = getSteps();
   const [activeStep, setActiveStep] = React.useState(0);
