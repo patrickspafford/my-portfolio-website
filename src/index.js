@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Bookshelf from './pages/BookshelfPage';
-import Resume from './pages/ResumePage';
 import Hobbies from './pages/HobbiesPage';
 import Projects from './pages/ProjectsPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -15,7 +14,6 @@ const RoutedApp = () => {
         <Router>
             <Switch>
                 <Route path='/bookshelf' component={Bookshelf}/>
-                <Route path='/resume' component={Resume} />
                 <Route path='/hobbies' component={Hobbies}/>
                 <Route path='/projects' component={Projects} /> 
                 <Route path='/' component={App} />

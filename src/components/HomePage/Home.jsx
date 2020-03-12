@@ -40,7 +40,7 @@ const cardData = [
     title: "My Resume",
     image: ProfessionalPhoto,
     buttons: ["Explore", "Download pdf"],
-    href: '/resume',
+    href: Resume,
     buttonRefs: [Resume, Resume],
     download: [false, 'PatrickSpaffordResume']
 },

@@ -53,7 +53,7 @@ const navBarItems = [
       href: "/resume"
     } ]
 
-export default function LeftDrawer({drawerOpen, handleDrawerClose,...props}) {
+export default function LeftDrawer({drawerOpen, handleDrawerClose}) {
 const navBarData = navBarItems;
 return (
     <div>

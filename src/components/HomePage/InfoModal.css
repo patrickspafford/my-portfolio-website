@@ -4,15 +4,13 @@ margin: 0 auto;
 }
 .paper {
     text-align: center;
-    padding: 12px;
+    padding: 10px;
 }
 .paragraph {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .infoModalTitle {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 2em;
+    font-size: 1.2em;
 }
