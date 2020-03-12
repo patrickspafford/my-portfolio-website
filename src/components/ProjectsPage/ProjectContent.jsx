@@ -2,7 +2,7 @@ import React from 'react';
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, withStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CodeBlock } from 'react-code-blocks';
-import blackPoster from '../../pictures/blackPoster.jpg';
+import blackPoster from '../../assets/blackPoster.jpg';
 
 const StyledExpansionPanelSummary = withStyles({
     root: {

@@ -1,7 +1,7 @@
 import { Modal, Paper, withStyles } from '@material-ui/core';
 import React from 'react';
 import './InfoModal.css';
-import ReactPicture from '../../pictures/reactPicture.png';
+import ReactPicture from '../../assets/reactPicture.png';
 
 const StyledPaper = withStyles({
 root: {
