@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Bookshelf from './pages/BookshelfPage';
-import Hobbies from './pages/HobbiesPage';
-import Projects from './pages/ProjectsPage';
+import Bookshelf from './components/BookShelfPage/BookshelfPage';
+import Hobbies from './components/HobbiesPage/HobbiesPage';
+import Projects from './components/ProjectsPage/ProjectsPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';

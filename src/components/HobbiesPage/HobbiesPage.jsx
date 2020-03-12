@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header'
-import HobbiesGridList from '../components/HobbiesPage/HobbiesGridList';
-import Footer from '../components/Footer';
+import Header from '../HeaderFooter/Header'
+import HobbiesGridList from './HobbiesGridList';
+import Footer from '../HeaderFooter/Footer';
 import './HobbiesPage.css'
 export default function HobbiesPage() {
     return(

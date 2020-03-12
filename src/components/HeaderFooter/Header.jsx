@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import InfoModal from '../components/HomePage/InfoModal';
+import InfoModal from '../HomePage/InfoModal';
 import LeftDrawer from './LeftDrawer';
-import { IconButton, AppBar, Tooltip, FormControlLabel, Switch, withStyles } from '@material-ui/core';
+import { IconButton, AppBar, Tooltip, withStyles } from '@material-ui/core';
 import './Header.css'
-import { Info, GitHub, Menu} from '@material-ui/icons'
+import { Info, Menu } from '@material-ui/icons'
 
 const StyledAppBar = withStyles({
   colorPrimary: 
@@ -21,7 +21,7 @@ root: {
   marginHorizontal: '24px'
 }
 })(IconButton)
-
+/*
 const StyledSwitch = withStyles({
   thumb: {
     backgroundColor: '#92dff0'
@@ -30,14 +30,11 @@ const StyledSwitch = withStyles({
     backgroundColor: '#fff'
   }
 })(Switch);
+*/
 
 export default function Header() {
 const [open, setOpen] = useState(false);
-const [darkMode, setDarkMode] = useState(false);
 const [infoModal, setInfoModal] = useState(false);
-const toggleDarkMode = () => {
-  setDarkMode(!darkMode);
-}
 return ([
           <StyledAppBar key='appBar' position='sticky'>
             <div className='appBar'>
@@ -46,11 +43,11 @@ return ([
                   <Menu/>
                 </StyledIconButton>
               </Tooltip>
-              <Tooltip title='GitHub'>
+              {/* <Tooltip title='GitHub'>
                 <StyledIconButton href="https://github.com/patrickspafford" target="_blank" rel="noopener noreferrer">
                     <GitHub />
                   </StyledIconButton>
-              </Tooltip>
+                </Tooltip> */}
                   <StyledIconButton size="small" href="/">
                     <p>Patrick Spafford's Portfolio</p>
                   </StyledIconButton>
@@ -59,9 +56,10 @@ return ([
                   <Info />
                 </StyledIconButton>
               </Tooltip>
+              {/*
               <StyledIconButton size="small">
               <FormControlLabel label="Dark Mode" control={<StyledSwitch onChange={() => toggleDarkMode} />} />
-              </StyledIconButton>
+              </StyledIconButton> */}
             </div>
           </StyledAppBar>,
       <InfoModal key='InfoModal' open={infoModal} close={() => setInfoModal(false)} />,

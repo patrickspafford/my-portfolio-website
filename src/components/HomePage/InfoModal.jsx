@@ -1,7 +1,7 @@
 import { Modal, Paper, withStyles } from '@material-ui/core';
 import React from 'react';
 import './InfoModal.css';
-import ReactPicture from '../../pictures/reactPicture.png';
+import ReactPicture from '../../assets/reactPicture.png';
 
 const StyledPaper = withStyles({
 root: {
@@ -15,7 +15,7 @@ return(
     <Modal className='modal' open={open} onEscapeKeyDown={close} keepMounted={true} onBackdropClick={close}>
         <StyledPaper className='paper'>
                 <h3 className='infoModalTitle'>
-                    <b>Welcome, stranger</b>
+                    <b>Welcome</b>
                 </h3>
             <img alt="React logo" src={ReactPicture} style={{height: '25%', width: '25%'}} draggable={false} />
             <p className='paragraph'>Hello, my name is Patrick Spafford and welcome to my portfolio website built with React. Feel free to contact me through

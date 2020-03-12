@@ -2,25 +2,25 @@ import React from 'react';
 import GifPlayer from 'react-gif-player';
 import ProjectContent from './ProjectContent';
 import { makeStyles, Button, Typography, StepLabel, Step, Stepper } from '@material-ui/core';
-import Welcome from '../../pictures/welcome.gif';
-import CardholderVideo from '../../pictures/CardholdersVideoGood.mov';
-import CardholderVideo2 from '../../pictures/CardholdersBad.mp4';
-import CardholderProcessor from '../../pictures/CardholderProcessor.txt';
-import BlueDiamondCardholder from '../../pictures/BlueDiamondCardholder.txt';
-import JavaWordSearcher from '../../pictures/JavaWordSearcher.mov';
-import WordSearchClass from '../../pictures/WordSearchClass.txt';
-import Letter from '../../pictures/Letter.txt';
-import PythonWordSearch from '../../pictures/PythonWordSearch.mov';
-import Boggle from '../../pictures/Boggle.txt';
-import TriviaGame from '../../pictures/TriviaGame.txt'
-import position from '../../pictures/position.txt';
-import Lexer from '../../pictures/Lexer.txt';
-import Parser from '../../pictures/Parser.txt';
-import HomeCard from '../../pictures/HomeCard.txt';
-import TriviaMovie from '../../pictures/TriviaMovie.mov';
-import DebugTrivia from '../../pictures/DebuggingTrivia.mov';
-import Ruby1 from '../../pictures/Ruby1.mov';
-import Ruby2 from '../../pictures/Ruby2.mov';
+import Welcome from '../../assets/welcome.gif';
+import CardholderVideo from '../../assets/CardholdersVideoGood.mov';
+import CardholderVideo2 from '../../assets/CardholdersBad.mp4';
+import CardholderProcessor from '../../assets/CardholderProcessor.txt';
+import BlueDiamondCardholder from '../../assets/BlueDiamondCardholder.txt';
+import JavaWordSearcher from '../../assets/JavaWordSearcher.mov';
+import WordSearchClass from '../../assets/WordSearchClass.txt';
+import Letter from '../../assets/Letter.txt';
+import PythonWordSearch from '../../assets/PythonWordSearch.mov';
+import Boggle from '../../assets/Boggle.txt';
+import TriviaGame from '../../assets/TriviaGame.txt'
+import position from '../../assets/position.txt';
+import Lexer from '../../assets/Lexer.txt';
+import Parser from '../../assets/Parser.txt';
+import HomeCard from '../../assets/HomeCard.txt';
+import TriviaMovie from '../../assets/TriviaMovie.mov';
+import DebugTrivia from '../../assets/DebuggingTrivia.mov';
+import Ruby1 from '../../assets/Ruby1.mov';
+import Ruby2 from '../../assets/Ruby2.mov';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',

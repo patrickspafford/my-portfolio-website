@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles, GridList, GridListTile, GridListTileBar} from '@material-ui/core';
-import Azure from '../../pictures/azure.png';
-import Deftones from '../../pictures/deftones.png';
-import LateKick from '../../pictures/lateKick.jpg';
-import Rec from '../../pictures/rec.jpg';
-import Ultimate from '../../pictures/ultimate.jpg';
-import Explore from '../../pictures/explore.jpg';
+import Azure from '../../assets/azure.png';
+import Deftones from '../../assets/deftones.png';
+import LateKick from '../../assets/lateKick.jpg';
+import Rec from '../../assets/rec.jpg';
+import Ultimate from '../../assets/ultimate.jpg';
+import Explore from '../../assets/explore.jpg';
 
 const useStyles = makeStyles(theme => ({
   root: {

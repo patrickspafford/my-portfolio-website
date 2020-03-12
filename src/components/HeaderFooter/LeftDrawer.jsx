@@ -1,8 +1,7 @@
 import React from 'react';
 import { Drawer, List, withStyles } from '@material-ui/core';
-import NavBarButton from './NavBarButton';
-import { Book, ContactMail, Code, SportsHandball,
-AccountTree, Description, Home, LinkedIn } from '@material-ui/icons';
+import LeftDrawerButton from './LeftDrawerButton';
+import { Book, ContactMail, Code, SportsHandball, Description, Home, LinkedIn, GitHub } from '@material-ui/icons';
 
 const StyledDrawer = withStyles({
     paper: {
@@ -34,7 +33,7 @@ const navBarItems = [
     },
     {
       name: "GitHub",
-      icon: <AccountTree style={{padding: '15px'}} />,
+      icon: <GitHub style={{padding: '15px'}} />,
       href: "https://github.com/patrickspafford"
     },
     {
@@ -61,7 +60,7 @@ return (
         <List>
           {navBarData.map((navBarItem, i) => {
             return (
-              <NavBarButton icon={navBarItem.icon} key={navBarItem.name} name={navBarItem.name} href={navBarItem.href} isBorderBottom={i === 0} />
+              <LeftDrawerButton icon={navBarItem.icon} key={navBarItem.name} name={navBarItem.name} href={navBarItem.href} isBorderBottom={i === 0} />
             )
           })}
         </List>
