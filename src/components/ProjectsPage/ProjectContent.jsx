@@ -2,6 +2,7 @@ import React from 'react';
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, withStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CodeBlock } from 'react-code-blocks';
+import blackPoster from '../../pictures/blackPoster.jpg';
 
 const StyledExpansionPanelSummary = withStyles({
     root: {
@@ -24,25 +25,27 @@ const StyledExpansionPanel = withStyles({
 
 const StyledExpansionPanelDetails = withStyles({
     root: {
-        display: 'block'
+        display: 'block',
+        height: '700px',
+        overflow: 'auto'
     }
 })(ExpansionPanelDetails);
 
-export default function ProjectContent({title, description, panelTitles, videos, poster, language, sampleCode}) {
+export default function ProjectContent({title, description, panelTitle, videos, language, sampleCode}) {
     return (
         <>
         <h3>{title}</h3>
         <p>{description}</p>
         <StyledExpansionPanel>
             <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
-                <h3>{panelTitles[0]}</h3>
+                <h3>{panelTitle}</h3>
             </StyledExpansionPanelSummary>
             <StyledExpansionPanelDetails>
                 <div type='row' style={{textAlign: 'left', display: 'flex'}}>
-                    <div type='column'>
+                    <div type='column' style={{margin: '5px'}}>
                         <CodeBlock  language={language} text={sampleCode[0]}/>
                     </div>
-                    <div type='column'>
+                    <div type='column' style={{margin: '5px'}}>
                         <CodeBlock language={language} text={sampleCode[1]} />
                     </div>
                 </div>
@@ -50,12 +53,12 @@ export default function ProjectContent({title, description, panelTitles, videos,
         </StyledExpansionPanel>
         <StyledExpansionPanel>
           <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
-            <h3>{panelTitles[1]}</h3>
+            <h3>Demo Videos</h3>
           </StyledExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div type='container'>
-              <video muted controls poster={poster} src={videos[0]} height='250px' width='370px' style={{margin: '20px'}}/>
-              <video muted controls poster={poster} src={videos[1]} height='250px' width='370px' style={{margin: '20px'}}/>
+              <video muted controls poster={blackPoster} src={videos[0]} height='250px' width='370px' style={{margin: '20px'}}/>
+              {(videos.length > 1) && <video muted controls poster={blackPoster} src={videos[1]} height='250px' width='370px' style={{margin: '20px'}}/>}
             </div>
           </ExpansionPanelDetails>
         </StyledExpansionPanel>

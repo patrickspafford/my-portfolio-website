@@ -5,10 +5,14 @@ import { makeStyles, withStyles, Button, Typography, StepLabel, Step, Stepper } 
 import Welcome from '../../pictures/welcome.gif';
 import CardholderVideo from '../../pictures/CardholdersVideoGood.mov';
 import CardholderVideo2 from '../../pictures/CardholdersBad.mp4';
-import blackPoster from '../../pictures/blackPoster.jpg';
 import CardholderProcessor from '../../pictures/CardholderProcessor.txt';
 import BlueDiamondCardholder from '../../pictures/BlueDiamondCardholder.txt';
-
+import JavaWordSearcher from '../../pictures/JavaWordSearcher.mov';
+import WordSearchClass from '../../pictures/WordSearchClass.txt';
+import Letter from '../../pictures/Letter.txt';
+import PythonWordSearch from '../../pictures/PythonWordSearch.mov';
+import Boggle from '../../pictures/Boggle.txt';
+import position from '../../pictures/position.txt';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -21,23 +25,21 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  buttonLabel: {
+    border: '1px solid white',
+    borderRadius: '5px',
+    padding: '10px',
+    backgroundColor: '#142630',
+    color: 'white'
+  },
+  stepper: {
+    backgroundColor: 'transparent'
+  },
+  stepLabel: {
+    color: 'black'
+  }
 }));
 
-const StyledButton = withStyles({
-  label: {
-      border: '1px solid white',
-      borderRadius: '5px',
-      padding: '10px',
-      backgroundColor: '#142630',
-      color: 'white'
-  }
-  })(Button);
-
-const StyledStepper = withStyles({
-  root: {
-    backgroundColor: 'transparent'
-  }
-})(Stepper);
 
 const StyledStepLabel = withStyles({
   root: {
@@ -81,21 +83,33 @@ function getStepContent(stepIndex) {
         <ProjectContent
           title='Cardholder Processor in Java (Fall 2018)'
           description="A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond card and a section for invalid transactions."
-          panelTitles={['Sample Code: CardholderProcessor.java and BlueDiamondCardholder', 'Demo Videos']}
+          panelTitle='Sample Code: CardholderProcessor.java and BlueDiamondCardholder'
           videos={[CardholderVideo, CardholderVideo2]}
-          poster={blackPoster}
           sampleCode={[readTextFile(CardholderProcessor), readTextFile(BlueDiamondCardholder)]}
           language='java'
           />
           )
-        case 2:
+      case 2:
       return (
         <ProjectContent
           title='WordSearcher in Java (Spring 2019)'
           description="A Java program from my second computing class that given a dictionary and an n x n matrix of letters can find every word on the board (consistent with the rules of Boggle) of any specified length or all lengths. If a word is on the board, the program can tell the player the position of that word's letters. If that word is not on the board, that is handled properly."
+          panelTitle='Sample Code: WordSearchClass.java and Letter.java'
+          videos={[JavaWordSearcher]}
+          sampleCode={[readTextFile(WordSearchClass), readTextFile(Letter)]}
+          language='java'
+          />
       )
     case 3:
-      return 'The same WordSearcher program, except written in Python!'
+      return (
+        <ProjectContent
+          title='WordSearcher in Python (Spring 2019)'
+          description='The same WordSearcher, except written in the syntax and using the data structures of Python'
+          panelTitle='Sample Code: Boggle.py and position.py'
+          videos={[PythonWordSearch]}
+          sampleCode={[readTextFile(Boggle), readTextFile(position)]}
+          language='python'
+          />)
     case 4:
       return 'A little C++ game that simulates a duel between players of different accuracies.'
     case 5:
@@ -111,46 +125,35 @@ export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-  const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
   return (
     <div className={classes.root}>
-      <StyledStepper activeStep={activeStep} alternativeLabel>
+      <Stepper classes={{root: classes.stepper}} activeStep={activeStep} alternativeLabel>
         {steps.map(label => (
           <Step key={label}>
             <StyledStepLabel>{label}</StyledStepLabel>
           </Step>
         ))}
-      </StyledStepper>
+      </Stepper>
       <div>
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>All steps completed.</Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Button classes={{label: classes.buttonLabel }} onClick={() => setActiveStep(0)}>Reset</Button>
           </div>
         ) : (
           <div style={{textAlign: 'center'}}>
             {getStepContent(activeStep)}
             <div>
-              <StyledButton
+              <Button
+                classes={{label: classes.buttonLabel}}
                 disabled={activeStep === 0}
-                onClick={handleBack}
+                onClick={() => setActiveStep(prevActiveStep => prevActiveStep - 1)}
               >
                 Back
-              </StyledButton>
-              <StyledButton onClick={handleNext}>
+              </Button>
+              <Button classes={{label: classes.buttonLabel}} onClick={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </StyledButton>
+              </Button>
             </div>
           </div>
         )}
