@@ -34,11 +34,7 @@ const StyledSwitch = withStyles({
 
 export default function Header() {
 const [open, setOpen] = useState(false);
-const [darkMode, setDarkMode] = useState(false);
 const [infoModal, setInfoModal] = useState(false);
-const toggleDarkMode = () => {
-  setDarkMode(!darkMode);
-}
 return ([
           <StyledAppBar key='appBar' position='sticky'>
             <div className='appBar'>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Drawer, List, withStyles } from '@material-ui/core';
 import LeftDrawerButton from './LeftDrawerButton';
-import { Book, ContactMail, Code, SportsHandball,
-AccountTree, Description, Home, LinkedIn, GitHub } from '@material-ui/icons';
+import { Book, ContactMail, Code, SportsHandball, Description, Home, LinkedIn, GitHub } from '@material-ui/icons';
 
 const StyledDrawer = withStyles({
     paper: {
