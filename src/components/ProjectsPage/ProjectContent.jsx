@@ -35,33 +35,34 @@ export default function ProjectContent({title, description, panelTitle, videos, 
     return (
         <>
         <h3>{title}</h3>
-        <p>{description}</p>
+        <p style={{paddingLeft: '15px', paddingRight: '15px'}}>{description}</p>
         <StyledExpansionPanel>
             <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
                 <h3>{panelTitle}</h3>
             </StyledExpansionPanelSummary>
             <StyledExpansionPanelDetails>
                 <div type='row' style={{textAlign: 'left', display: 'flex'}}>
-                    <div type='column' style={{margin: '5px'}}>
-                        <CodeBlock  language={language} text={sampleCode[0]}/>
-                    </div>
-                    <div type='column' style={{margin: '5px'}}>
-                        <CodeBlock language={language} text={sampleCode[1]} />
-                    </div>
+                    {sampleCode.map((file) => {
+                        return (
+                        <div type='column' style={{margin: '5px'}}>
+                            <CodeBlock  language={language} text={file}/>
+                        </div>
+                    )})}  
                 </div>
             </StyledExpansionPanelDetails>
         </StyledExpansionPanel>
-        <StyledExpansionPanel>
+        {videos.length > 0 && <StyledExpansionPanel>
           <StyledExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}} />}>
             <h3>Demo Videos</h3>
           </StyledExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div type='container'>
-              <video muted controls poster={blackPoster} src={videos[0]} height='250px' width='370px' style={{margin: '20px'}}/>
-              {(videos.length > 1) && <video muted controls poster={blackPoster} src={videos[1]} height='250px' width='370px' style={{margin: '20px'}}/>}
+              {videos.map((video) => {
+              return (<video muted controls poster={blackPoster} src={video} height='250px' width='370px' 
+                style={{margin: '20px'}}/>)})}
             </div>
           </ExpansionPanelDetails>
-        </StyledExpansionPanel>
+              </StyledExpansionPanel> }
         </>
     );
 

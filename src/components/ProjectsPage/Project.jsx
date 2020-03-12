@@ -1,7 +1,7 @@
 import React from 'react';
 import GifPlayer from 'react-gif-player';
 import ProjectContent from './ProjectContent';
-import { makeStyles, withStyles, Button, Typography, StepLabel, Step, Stepper } from '@material-ui/core';
+import { makeStyles, Button, Typography, StepLabel, Step, Stepper } from '@material-ui/core';
 import Welcome from '../../pictures/welcome.gif';
 import CardholderVideo from '../../pictures/CardholdersVideoGood.mov';
 import CardholderVideo2 from '../../pictures/CardholdersBad.mp4';
@@ -12,7 +12,15 @@ import WordSearchClass from '../../pictures/WordSearchClass.txt';
 import Letter from '../../pictures/Letter.txt';
 import PythonWordSearch from '../../pictures/PythonWordSearch.mov';
 import Boggle from '../../pictures/Boggle.txt';
+import TriviaGame from '../../pictures/TriviaGame.txt'
 import position from '../../pictures/position.txt';
+import Lexer from '../../pictures/Lexer.txt';
+import Parser from '../../pictures/Parser.txt';
+import HomeCard from '../../pictures/HomeCard.txt';
+import TriviaMovie from '../../pictures/TriviaMovie.mov';
+import DebugTrivia from '../../pictures/DebuggingTrivia.mov';
+import Ruby1 from '../../pictures/Ruby1.mov';
+import Ruby2 from '../../pictures/Ruby2.mov';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -40,15 +48,58 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-const StyledStepLabel = withStyles({
-  root: {
-    color: 'black'
+const projects = [
+  {
+    title: 'Cardholder Processor in Java (Fall 2018)',
+    description: "A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond card and a section for invalid transactions.",
+    panelTitle: 'Sample Code: CardholderProcessor.java and BlueDiamondCardholder',
+    videos: [CardholderVideo, CardholderVideo2],
+    sampleCode: [readTextFile(CardholderProcessor), readTextFile(BlueDiamondCardholder)],
+    language: 'java'
+  },
+  {
+    title: 'WordSearcher in Java (Spring 2019)',
+    description: "A Java program from my second computing class that given a dictionary and an n x n matrix of letters can find every word on the board (consistent with the rules of Boggle) of any specified length or all lengths. If a word is on the board, the program can tell the player the position of that word's letters. If that word is not on the board, that is handled properly.",
+    panelTitle: 'Sample Code: WordSearchClass.java and Letter.java',
+    videos: [JavaWordSearcher],
+    sampleCode: [readTextFile(WordSearchClass), readTextFile(Letter)],
+    language: 'java'
+  },
+  {
+    title: 'WordSearcher in Python (Spring 2019)',
+    description: 'The same WordSearcher, except written in the syntax and using the data structures of Python',
+    panelTitle: 'Sample Code: Boggle.py and position.py',
+    videos: [PythonWordSearch],
+    sampleCode: [readTextFile(Boggle), readTextFile(position)],
+    language: 'python'
+  },
+  {
+    title: 'Trivia Game in C++ (Fall 2019)',
+    description: 'A short trivia game that makes use of pointers and a linked list data structure.',
+    panelTitle: 'Sample Code: TriviaGame.cpp',
+    videos: [TriviaMovie, DebugTrivia],
+    sampleCode: [readTextFile(TriviaGame)],
+    language: 'cpp'
+  },
+  {
+    title: 'Parser for Tiny Grammar in Ruby (Fall 2019)',
+    description: "After the tokens of the source file are 'lexed,' this program constructs the parse tree to check whether the source file has a syntax error according to the grammar rules.",
+    panelTitle: 'Sample Code: Lexer.rb and Parser.rb',
+    videos: [Ruby1, Ruby2],
+    sampleCode: [readTextFile(Lexer), readTextFile(Parser)],
+    language: 'ruby'
+  },
+  {
+    title: 'Portfolio Website in React (Spring 2020)',
+    description: "Thank you for taking a tour of my coding projects. Was an honor.",
+    panelTitle: 'SampleCode: HomeCard.jsx',
+    videos: [],
+    sampleCode: [readTextFile(HomeCard)],
+    language: 'jsx'
   }
-})(StepLabel);
-
+]
 function getSteps() {
-  return ['Welcome', 'Cardholder (Java)', 'WordSearcher (Java)', 'WordSearcher (Python)', 'Duel (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
+  return ['Welcome', 'Cardholder (Java)', 'WordSearcher (Java)', 'WordSearcher (Python)', 'Trivia (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
 
 function readTextFile(file)
@@ -69,86 +120,45 @@ function readTextFile(file)
     rawFile.send(null);
     return allText
 }
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return (
-      <>
-      <h3>Welcome to a tour of some of my notable coding projects.</h3>
-      <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
-      </>
-      );
-    case 1: 
-      return (
-        <ProjectContent
-          title='Cardholder Processor in Java (Fall 2018)'
-          description="A Java program from my first computing class that reads a text file of the monthly transactions made by a credit card company's cardholders and processes that information to produce a report. This report is divided into those with Sapphire, Diamond and Blue Diamond card and a section for invalid transactions."
-          panelTitle='Sample Code: CardholderProcessor.java and BlueDiamondCardholder'
-          videos={[CardholderVideo, CardholderVideo2]}
-          sampleCode={[readTextFile(CardholderProcessor), readTextFile(BlueDiamondCardholder)]}
-          language='java'
-          />
-          )
-      case 2:
-      return (
-        <ProjectContent
-          title='WordSearcher in Java (Spring 2019)'
-          description="A Java program from my second computing class that given a dictionary and an n x n matrix of letters can find every word on the board (consistent with the rules of Boggle) of any specified length or all lengths. If a word is on the board, the program can tell the player the position of that word's letters. If that word is not on the board, that is handled properly."
-          panelTitle='Sample Code: WordSearchClass.java and Letter.java'
-          videos={[JavaWordSearcher]}
-          sampleCode={[readTextFile(WordSearchClass), readTextFile(Letter)]}
-          language='java'
-          />
-      )
-    case 3:
-      return (
-        <ProjectContent
-          title='WordSearcher in Python (Spring 2019)'
-          description='The same WordSearcher, except written in the syntax and using the data structures of Python'
-          panelTitle='Sample Code: Boggle.py and position.py'
-          videos={[PythonWordSearch]}
-          sampleCode={[readTextFile(Boggle), readTextFile(position)]}
-          language='python'
-          />)
-    case 4:
-      return 'A little C++ game that simulates a duel between players of different accuracies.'
-    case 5:
-      return 'A Ruby parser for a hypothetical programming language with a given tiny grammar.'
-    case 6:
-      return 'The very website you are on right now! Written in React.js'
-      default:
-      return 'Unknown stepIndex';
-  }
-}
-
-export default function HorizontalLabelPositionBelowStepper() {
+export default function Project() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  const [activeStep, setActiveStep] = React.useState(0);
+  let currentProject = projects[activeStep - 1];
   return (
     <div className={classes.root}>
       <Stepper classes={{root: classes.stepper}} activeStep={activeStep} alternativeLabel>
         {steps.map(label => (
           <Step key={label}>
-            <StyledStepLabel>{label}</StyledStepLabel>
+            <StepLabel classes={{root: classes.stepLabel}}>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-      <div>
+      <div style={{textAlign: 'center'}}>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed.</Typography>
+            <Typography className={classes.instructions}>This is the end of the tour, but there is more in development...</Typography>
             <Button classes={{label: classes.buttonLabel }} onClick={() => setActiveStep(0)}>Reset</Button>
           </div>
         ) : (
           <div style={{textAlign: 'center'}}>
-            {getStepContent(activeStep)}
+            { activeStep === 0 ?
+                            <>
+                              <h3>Welcome to a tour of some of my notable coding projects.</h3>
+                              <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
+                            </> :
+                            <ProjectContent
+                                    title={currentProject.title}
+                                    description={currentProject.description}
+                                    panelTitle={currentProject.panelTitle}
+                                    videos={currentProject.videos}
+                                    sampleCode={currentProject.sampleCode}
+                                    language={currentProject.language} /> }
             <div>
               <Button
                 classes={{label: classes.buttonLabel}}
                 disabled={activeStep === 0}
-                onClick={() => setActiveStep(prevActiveStep => prevActiveStep - 1)}
-              >
+                onClick={() => setActiveStep(prevActiveStep => prevActiveStep - 1)}>
                 Back
               </Button>
               <Button classes={{label: classes.buttonLabel}} onClick={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}>
