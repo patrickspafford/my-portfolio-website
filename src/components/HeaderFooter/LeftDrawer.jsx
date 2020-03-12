@@ -24,7 +24,7 @@ const navBarItems = [
     {
       name: "Contact Me",
       icon: <ContactMail style={{padding: '15px'}}/>,
-      href: "mailto:patrickspafford1@gmail.com"
+      href: "mailto:pas0037@auburn.edu"
     },
     {
       name: "Coding Projects",
