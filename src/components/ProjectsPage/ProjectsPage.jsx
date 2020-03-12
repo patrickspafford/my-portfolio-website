@@ -5,7 +5,7 @@ import Footer from '../HeaderFooter/Footer';
 
 export default function ProjectsPage() {
     return(
-    <div>
+    <div style={{minWidth: '925px'}}>
         <Header />
         <ProjectStepper />
         <Footer />  

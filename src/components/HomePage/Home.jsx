@@ -23,9 +23,9 @@ const cardData = [
 {
     title: "My Coding Projects",
     image: ProjectsImage,
-    buttons: ["Explore"],
+    buttons: ["Explore", "GitHub"],
     href: '/projects',
-    buttonRefs: ['/projects'],
+    buttonRefs: ['/projects', 'https://github.com/patrickspafford'],
     download: [false]
 },
 {

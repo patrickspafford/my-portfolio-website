@@ -134,7 +134,7 @@ export default function BookshelfPage() {
         }
     ]
     return(
-        <>
+        <div style={{minWidth: '925px'}}>
             <Header style={{marginBottom: '10px'}} />
             {expansionPanels.map((expansionPanel, i) => {
                 return (
@@ -160,6 +160,6 @@ export default function BookshelfPage() {
             })} 
             <Footer /> 
             
-        </>
+        </div>
     )
 }
