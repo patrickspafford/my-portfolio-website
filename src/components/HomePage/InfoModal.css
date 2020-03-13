@@ -1,6 +1,7 @@
 .modal {
-width: 50%;
+width: calc(200px + 20vw);
 margin: 0 auto;
+border: 0;
 }
 .paper {
     text-align: center;

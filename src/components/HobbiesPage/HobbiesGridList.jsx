@@ -24,6 +24,11 @@ const useStyles = makeStyles(theme => ({
     background:
       'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
       'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    whiteSpace: 'normal'
+  },
+  title: {
+    overflow: 'auto',
+    whiteSpace: 'normal'
   },
   icon: {
     color: 'white',
@@ -67,15 +72,16 @@ export default function HobbiesGridList() {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={320} spacing={1} className={classes.gridList}>
+      <GridList spacing={1} className={classes.gridList}>
         {tileData.map(tile => (
           <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
-            <img src={tile.img} alt={tile.title} />
+            <img src={tile.img} alt={tile.title}  />
             <GridListTileBar
               title={tile.title}
               titlePosition="top"
               actionPosition="left"
               className={classes.titleBar}
+              classes={{title: classes.title}}
             />
           </GridListTile>
         ))}

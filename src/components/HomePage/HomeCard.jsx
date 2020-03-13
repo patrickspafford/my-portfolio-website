@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
         border: '2px solid white',
         backgroundColor: '#142630',
         minWidth: '300px',
-        maxWidth: '700px'
+        maxWidth: '400px'
     },
     cardMediaRoot: {
         paddingTop: '10px'
@@ -28,7 +28,7 @@ export default function HomeCard({title, href, image, buttons, buttonRefs, downl
     return(
         <Card classes={{root: classes.card }} key={title}>
             <CardActionArea href={href}>
-                <CardMedia classes={{root: classes.cardMediaRoot, img: classes.cardMediaImg }} src={image} title={title} height="350" component="img" />
+                <CardMedia classes={{root: classes.cardMediaRoot, img: classes.cardMediaImg }} src={image} title={title} height="300" component="img" />
                 <CardContent>
                     <h2 className='h2'><u>{title}</u></h2>
                 </CardContent>
