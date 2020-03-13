@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
     background: 'linear-gradient(#eee, #405bc7)',
   },
   gridList: {
-    width: '90%',
+    width: '85%',
     transform: 'translateZ(0)',
   },
   titleBar: {
     background:
       'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+      'rgba(0,0,0,0.3) 90%, rgba(0,0,0,0) 100%)',
     whiteSpace: 'normal'
   },
   title: {
@@ -38,34 +38,34 @@ const useStyles = makeStyles(theme => ({
 const tileData = [
     {
         img: Azure,
-        title: "Microsoft Azure",
+        title: "Cloud: Microsoft Azure",
         featured: false
     },
     {
         img: LateKick,
-        title: 'Late Kick Podcast',
+        title: 'Podcast: The Late Kick',
         featured: false
     },
     {
-        img: Ultimate,
-        title: "Intramural Ultimate Frisbee",
-        featured: true
+      img: Explore,
+      title: 'Exploring: Yosemite',
+      featured: true
     },
     {
         img: Rec,
-        title: 'Exercising at the Auburn Rec',
+        title: 'Exercise: The Auburn Rec',
         featured: false
     },
     {
         img: Deftones,
-        title: "Music",
+        title: "Music: Deftones",
         featured: false
     },
     {
-        img: Explore,
-        title: 'Exploring',
-        featured: true
-    }
+      img: Ultimate,
+      title: "Sports: Intramural Ultimate Frisbee",
+      featured: true
+  },
 ]
 export default function HobbiesGridList() {
   const classes = useStyles();
