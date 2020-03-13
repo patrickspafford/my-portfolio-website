@@ -6,10 +6,10 @@ border: 0;
 .paper {
     text-align: center;
     padding: 10px;
+    padding-top: 20px;
 }
 .paragraph {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-top: 10px;
     padding-bottom: 10px;
 }
 .infoModalTitle {
