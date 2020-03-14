@@ -4,7 +4,7 @@ import ProjectContent from './ProjectContent';
 import { makeStyles, Button, Typography, StepLabel, Step, Stepper } from '@material-ui/core';
 import Welcome from '../../assets/welcome.gif';
 import CardholderVideo from '../../assets/CardholdersVideoGood.mov';
-import CardholderVideo2 from '../../assets/CardholdersBad.mp4';
+import CardholderVideo2 from '../../assets/CardholdersBad.mov';
 import CardholderProcessor from '../../assets/CardholderProcessor.txt';
 import BlueDiamondCardholder from '../../assets/BlueDiamondCardholder.txt';
 import JavaWordSearcher from '../../assets/JavaWordSearcher.mov';
