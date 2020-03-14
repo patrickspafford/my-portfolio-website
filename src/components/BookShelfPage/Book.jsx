@@ -57,7 +57,7 @@ const StyledExpansionPanel = withStyles({
 
 export default function Book({title, image, desc}) {
     return (
-        <div style={{margin: '15px'}}>
+        <div style={{margin: '10px'}}>
         <StyledCard>
             <StyledCardHeader title={title} style={{textOverflow: 'ellipsis'}} />
             <StyledCardContent>
