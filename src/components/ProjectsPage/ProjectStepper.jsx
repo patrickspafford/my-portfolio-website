@@ -67,7 +67,7 @@ const projects = [
   },
   {
     title: 'WordSearcher in Python (Spring 2019)',
-    description: 'The same WordSearcher, except written in the syntax and using the data structures of Python',
+    description: 'The same WordSearcher, except written in the syntax and using the data structures of Python.',
     panelTitle: 'Sample Code: Boggle.py and position.py',
     videos: [PythonWordSearch],
     sampleCode: [readTextFile(Boggle), readTextFile(position)],
@@ -136,7 +136,7 @@ export default function ProjectStepper() {
         </StepLabel>
         { isFirstStep ?
                       <div style={{textAlign: 'center'}}>
-                        <h3>Welcome to a tour of some of my notable coding projects.</h3>
+                        <h1>Welcome to a tour of some of my notable coding projects.</h1>
                         <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
                       </div> :
                       <ProjectContent
