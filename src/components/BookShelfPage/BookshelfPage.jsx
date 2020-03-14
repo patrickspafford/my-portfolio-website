@@ -149,7 +149,7 @@ export default function BookshelfPage() {
                                     </Typography>
                                 </ExpansionPanelSummary>
                                 <StyledExpansionPanelDetails>
-                                    <Grid container={true}>
+                                    <Grid container={true} style={{justify: 'center'}}>
                                     {expansionPanel.books.map(book =>
                                     <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
                                     </Grid>

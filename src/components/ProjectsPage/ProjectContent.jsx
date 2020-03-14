@@ -41,10 +41,10 @@ export default function ProjectContent({title, description, panelTitle, videos, 
                 <h3>{panelTitle}</h3>
             </StyledExpansionPanelSummary>
             <StyledExpansionPanelDetails>
-                <div type='row' style={{textAlign: 'left', display: 'flex'}}>
-                    {sampleCode.map((file) => {
+                <div style={{textAlign: 'left'}}>
+                    {sampleCode.map((file, i) => {
                         return (
-                        <div type='column' style={{margin: '5px'}}>
+                        <div type='column' key={i} style={{margin: '5px'}}>
                             <CodeBlock  language={language} text={file}/>
                         </div>
                     )})}  
@@ -57,9 +57,9 @@ export default function ProjectContent({title, description, panelTitle, videos, 
           </StyledExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div type='container'>
-              {videos.map((video) => {
-              return (<video muted controls poster={blackPoster} src={video} height='250px' width='370px' 
-                style={{margin: '20px'}}/>)})}
+              {videos.map((video, j) => {
+              return (<video key={j} muted controls src={video} height='50%' width='50%'poster={blackPoster} 
+                />)})}
             </div>
           </ExpansionPanelDetails>
               </StyledExpansionPanel> }

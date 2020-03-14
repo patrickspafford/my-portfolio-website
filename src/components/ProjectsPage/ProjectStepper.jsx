@@ -23,8 +23,7 @@ import Ruby1 from '../../assets/Ruby1.mov';
 import Ruby2 from '../../assets/Ruby2.mov';
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-    background: 'linear-gradient(180deg, #eee, #424486)'
+    background: 'linear-gradient(180deg, #505494, #eee)'
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -41,7 +40,8 @@ const useStyles = makeStyles(theme => ({
     color: 'white'
   },
   stepper: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    whiteSpace: 'word-wrap',
   },
   stepLabel: {
     color: 'black'
@@ -125,14 +125,47 @@ export default function ProjectStepper() {
   const steps = getSteps();
   const [activeStep, setActiveStep] = React.useState(0);
   let currentProject = projects[activeStep - 1];
+  const stepperBody = steps.map((label, i) => {
+    const isFirstStep = activeStep === 0;
+    const isCurrentProject = activeStep === i;
+    if (isCurrentProject) {
+    return (
+    <Step key={label}>
+      <StepLabel classes={{root: classes.stepLabel}}>
+        {label}
+        </StepLabel>
+        { isFirstStep ?
+                      <div style={{textAlign: 'center'}}>
+                        <h3>Welcome to a tour of some of my notable coding projects.</h3>
+                        <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
+                      </div> :
+                      <ProjectContent
+                        title={currentProject.title}
+                        description={currentProject.description}
+                        panelTitle={currentProject.panelTitle}
+                        videos={currentProject.videos}
+                        sampleCode={currentProject.sampleCode}
+                        language={currentProject.language} /> }}
+    </Step>
+  )
+}
+else {
+  return (
+    <Step key={label}>
+      <StepLabel classes={{root: classes.stepLabel}}>
+        {label}
+        </StepLabel>
+       
+    </Step>
+  )
+
+}});
+
+
   return (
     <div className={classes.root}>
-      <Stepper classes={{root: classes.stepper}} activeStep={activeStep} alternativeLabel>
-        {steps.map(label => (
-          <Step key={label}>
-            <StepLabel classes={{root: classes.stepLabel}}>{label}</StepLabel>
-          </Step>
-        ))}
+      <Stepper classes={{root: classes.stepper}} steps={7} activeStep={activeStep} orientation='vertical' >
+        {stepperBody}
       </Stepper>
       <div style={{textAlign: 'center'}}>
         {activeStep === steps.length ? (
@@ -142,18 +175,7 @@ export default function ProjectStepper() {
           </div>
         ) : (
           <div style={{textAlign: 'center'}}>
-            { activeStep === 0 ?
-                            <>
-                              <h3>Welcome to a tour of some of my notable coding projects.</h3>
-                              <GifPlayer gif={Welcome} still={Welcome} style={{height: '300px', width: '300px'}} />
-                            </> :
-                            <ProjectContent
-                                    title={currentProject.title}
-                                    description={currentProject.description}
-                                    panelTitle={currentProject.panelTitle}
-                                    videos={currentProject.videos}
-                                    sampleCode={currentProject.sampleCode}
-                                    language={currentProject.language} /> }
+           
             <div>
               <Button
                 classes={{label: classes.buttonLabel}}

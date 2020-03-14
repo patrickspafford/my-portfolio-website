@@ -5,7 +5,7 @@ import ReactPicture from '../../assets/reactPicture.png';
 
 const StyledPaper = withStyles({
 root: {
-    background: 'linear-gradient(rgba(20,38,48, 1), rgba(0, 0, 0, 0.20))',
+    background: 'linear-gradient(rgba(20,38,48, 1), rgba(0, 0, 0, 0.8))',
     color: 'white'
 }
 })(Paper);
