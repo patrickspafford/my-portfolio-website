@@ -9,6 +9,8 @@ import CardholderProcessor from '../../assets/CardholderProcessor.txt';
 import BlueDiamondCardholder from '../../assets/BlueDiamondCardholder.txt';
 import JavaWordSearcher from '../../assets/JavaWordSearcher.mov';
 import WordSearchClass from '../../assets/WordSearchClass.txt';
+import WordLadderDemo from '../../assets/WordLadderDemo.mov';
+import Doublets from '../../assets/Doublets.txt';
 import Letter from '../../assets/Letter.txt';
 import PythonWordSearch from '../../assets/PythonWordSearch.mov';
 import Boggle from '../../assets/Boggle.txt';
@@ -55,6 +57,14 @@ const projects = [
     panelTitle: 'Sample Code: CardholderProcessor.java and BlueDiamondCardholder',
     videos: [CardholderVideo, CardholderVideo2],
     sampleCode: [readTextFile(CardholderProcessor), readTextFile(BlueDiamondCardholder)],
+    language: 'java'
+  },
+  {
+    title: 'WordLadders in Java (Spring 2019)',
+    description: "A Java program from my second computing class that can transform a given word into another word by making one the least number of one letter changes, where each intermediate step is also a word defined in the dictionary.",
+    paneltTile: "Sample Code: Doublets.java",
+    videos: [WordLadderDemo],
+    sampleCode: [readTextFile(Doublets)],
     language: 'java'
   },
   {
