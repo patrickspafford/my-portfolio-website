@@ -61,8 +61,8 @@ const projects = [
   },
   {
     title: 'WordLadders in Java (Spring 2019)',
-    description: "A Java program from my second computing class that can transform a given word into another word by making one the least number of one letter changes, where each intermediate step is also a word defined in the dictionary.",
-    paneltTile: "Sample Code: Doublets.java",
+    description: "A Java program from my second computing class that can transform a given word into another word by making the minimum number of one letter changes, where each intermediate step is also a word defined in the dictionary. Each word along the way forms a \"word ladder\" between two words.",
+    panelTitle: "Sample Code: Doublets.java",
     videos: [WordLadderDemo],
     sampleCode: [readTextFile(Doublets)],
     language: 'java'
@@ -109,7 +109,7 @@ const projects = [
   }
 ]
 function getSteps() {
-  return ['Welcome', 'Cardholder (Java)', 'WordSearcher (Java)', 'WordSearcher (Python)', 'Trivia (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
+  return ['Welcome', 'Cardholder (Java)', 'Word Ladders (Java)', 'Word Searcher (Java)', 'Word Searcher (Python)', 'Trivia (C++)',  'Parser (Ruby)', 'This Website (React.js)'];
 }
 
 function readTextFile(file)

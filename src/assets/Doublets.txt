@@ -1,1 +1,195 @@
-import java.io.BufferedReader;import java.io.InputStream;import java.io.InputStreamReader;import java.util.Arrays;import java.util.ArrayDeque;import java.util.ArrayList;import java.util.Deque;import java.util.HashSet;import java.util.LinkedList;import java.util.List;import java.util.Scanner;import java.util.HashSet;import java.util.Stack;import java.util.stream.Collectors;/** * Provides an implementation of the WordLadderGame interface.  * * @author Patrick Spafford (pas0037@auburn.edu) * @author Dean Hendrix (dh@auburn.edu) * @version 2019-03-29 */public class Doublets implements WordLadderGame {   // The word list used to validate words.   // Must be instantiated and populated in the constructor.   /////////////////////////////////////////////////////////////////////////////   // DECLARE A FIELD NAMED lexicon HERE. THIS FIELD IS USED TO STORE ALL THE //   // WORDS IN THE WORD LIST. YOU CAN CREATE YOUR OWN COLLECTION FOR THIS     //   // PURPOSE OF YOU CAN USE ONE OF THE JCF COLLECTIONS. SUGGESTED CHOICES    //   // ARE TreeSet (a red-black tree) OR HashSet (a closed addressed hash      //   // table with chaining).   /////////////////////////////////////////////////////////////////////////////   HashSet<String> lexicon;   /**    * Instantiates a new instance of Doublets with the lexicon populated with    * the strings in the provided InputStream. The InputStream can be formatted    * in different ways as long as the first string on each line is a word to be    * stored in the lexicon.    */   public Doublets(InputStream in) {      try {         //////////////////////////////////////         // INSTANTIATE lexicon OBJECT HERE  //         //////////////////////////////////////         lexicon = new HashSet<String>();         Scanner s =            new Scanner(new BufferedReader(new InputStreamReader(in)));         while (s.hasNext()) {            String str = s.next();            /////////////////////////////////////////////////////////////            // INSERT CODE HERE TO APPROPRIATELY STORE str IN lexicon. //            /////////////////////////////////////////////////////////////            lexicon.add(str.toUpperCase());            s.nextLine();         }         in.close();      }      catch (java.io.IOException e) {         System.err.println("Error reading from InputStream.");         System.exit(1);      }   }   //////////////////////////////////////////////////////////////   // ADD IMPLEMENTATIONS FOR ALL WordLadderGame METHODS HERE  //   //////////////////////////////////////////////////////////////   public int getHammingDistance(String str1, String str2) {      if (str1.length() != str2.length()) {         return -1;      }      String firstWord = str1;      String secondWord = str2;      int distance = 0;      for (int i = 0; i < firstWord.length(); i++) {         if (firstWord.charAt(i) != secondWord.charAt(i)) {            distance++;         }      }      return distance;   }   public List<String> getMinLadder(String start, String end) {      List<String> ladder = new ArrayList<String>();      String startWord = start.toUpperCase();      String endWord = end.toUpperCase();      HashSet<String> visitedWords = new HashSet<String>();      if (!isWord(startWord) || !isWord(endWord)) {         return ladder;      }      if (getHammingDistance(start, end) == -1) {         return ladder;      }      if (startWord.equals(endWord)) {         ladder.add(startWord.toLowerCase());         return ladder;      }      ArrayDeque<Node> queue = new ArrayDeque<Node>();      visitedWords.add(startWord);      //ladder.add(startWord.toLowerCase());      queue.addLast(new Node(startWord, null));       while (!queue.isEmpty()) {         Node n = queue.removeFirst();         String word = n.string;         for (String neighbor: getNeighbors(word)) {            String neighborWord = neighbor.toUpperCase();            if (!visitedWords.contains(neighborWord)                && !neighborWord.equals(endWord)) {               visitedWords.add(neighborWord);               queue.addLast(new Node(neighborWord, n));            }            if (neighborWord.equals(endWord)) {               ladder.add(startWord.toLowerCase());               Stack<String> stack = new Stack<String>();               while (n.next != null) {                  stack.push(n.string.toLowerCase());                  n = n.next;               }               if (stack != null && !stack.isEmpty()) {                  Stack<String> newStack = new Stack<String>();                  newStack.addAll(stack);                  for (String item : newStack) {                     ladder.add(stack.pop());                  }               }               ladder.add(neighborWord.toLowerCase());               return ladder;              }                    }                     }       return ladder;   }   public List<String> getNeighbors(String word) {      List<String> neighbors = new ArrayList<String>();      char[] characters = word.toUpperCase().toCharArray();      for (int k = 0; k < characters.length; k++) { // for each character in word         char[] wordToCheck = Arrays.copyOf(characters, characters.length); //original word each time         for (char h = 65; h <= 90; h++) { // for each possible substitution for letter            wordToCheck[k] = h;            String neighbor = String.valueOf(wordToCheck).toUpperCase();            if (lexicon.contains(neighbor)) {               if (!neighbor.equals(word.toUpperCase())) {                  neighbors.add(neighbor.toLowerCase());               }            }         }      }      return neighbors;   }   public int getWordCount() {      return lexicon.size();   }   public boolean isWord(String str) {      return (lexicon.contains(str.toUpperCase()));   }   public boolean isWordLadder(List<String> sequence) {      if (sequence == null || sequence.size() == 0) {         return false;      }      for (int g = 0; g < sequence.size() - 1; g++) {         String entry = sequence.get(g);         String nextEntry = sequence.get(g + 1);         if (!lexicon.contains(entry.toUpperCase())) {            return false;         }         if (getHammingDistance(entry, nextEntry) != 1) {            return false;         }        }      return true;   }      public class Node {      public String string;      public Node next;         public Node(String string, Node next) {         this.string = string;         this.next = next;      }      public Node(String string) {         this.string = string;         this.next = null;              }   }  }
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import java.util.Arrays;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.HashSet;
+
+import java.util.Stack;
+
+import java.util.stream.Collectors;
+
+/**
+ * Provides an implementation of the WordLadderGame interface. 
+ *
+ * @author Patrick Spafford (pas0037@auburn.edu)
+ * @author Dean Hendrix (dh@auburn.edu)
+ * @version 2019-03-29
+ */
+public class Doublets implements WordLadderGame {
+
+   // The word list used to validate words.
+   // Must be instantiated and populated in the constructor.
+   /////////////////////////////////////////////////////////////////////////////
+   // DECLARE A FIELD NAMED lexicon HERE. THIS FIELD IS USED TO STORE ALL THE //
+   // WORDS IN THE WORD LIST. YOU CAN CREATE YOUR OWN COLLECTION FOR THIS     //
+   // PURPOSE OF YOU CAN USE ONE OF THE JCF COLLECTIONS. SUGGESTED CHOICES    //
+   // ARE TreeSet (a red-black tree) OR HashSet (a closed addressed hash      //
+   // table with chaining).
+   /////////////////////////////////////////////////////////////////////////////
+   HashSet<String> lexicon;
+   /**
+    * Instantiates a new instance of Doublets with the lexicon populated with
+    * the strings in the provided InputStream. The InputStream can be formatted
+    * in different ways as long as the first string on each line is a word to be
+    * stored in the lexicon.
+    */
+   public Doublets(InputStream in) {
+      try {
+         //////////////////////////////////////
+         // INSTANTIATE lexicon OBJECT HERE  //
+         //////////////////////////////////////
+         lexicon = new HashSet<String>();
+         Scanner s =
+            new Scanner(new BufferedReader(new InputStreamReader(in)));
+         while (s.hasNext()) {
+            String str = s.next();
+            /////////////////////////////////////////////////////////////
+            // INSERT CODE HERE TO APPROPRIATELY STORE str IN lexicon. //
+            /////////////////////////////////////////////////////////////
+            lexicon.add(str.toUpperCase());
+            s.nextLine();
+         }
+         in.close();
+      }
+      catch (java.io.IOException e) {
+         System.err.println("Error reading from InputStream.");
+         System.exit(1);
+      }
+   }
+
+
+   //////////////////////////////////////////////////////////////
+   // ADD IMPLEMENTATIONS FOR ALL WordLadderGame METHODS HERE  //
+   //////////////////////////////////////////////////////////////
+   public int getHammingDistance(String str1, String str2) {
+      if (str1.length() != str2.length()) {
+         return -1;
+      }
+      String firstWord = str1;
+      String secondWord = str2;
+      int distance = 0;
+      for (int i = 0; i < firstWord.length(); i++) {
+         if (firstWord.charAt(i) != secondWord.charAt(i)) {
+            distance++;
+         }
+      }
+      return distance;
+   }
+   public List<String> getMinLadder(String start, String end) {
+      List<String> ladder = new ArrayList<String>();
+      String startWord = start.toUpperCase();
+      String endWord = end.toUpperCase();
+      HashSet<String> visitedWords = new HashSet<String>();
+      if (!isWord(startWord) || !isWord(endWord)) {
+         return ladder;
+      }
+      if (getHammingDistance(start, end) == -1) {
+         return ladder;
+      }
+      if (startWord.equals(endWord)) {
+         ladder.add(startWord.toLowerCase());
+         return ladder;
+      }
+      ArrayDeque<Node> queue = new ArrayDeque<Node>();
+      visitedWords.add(startWord);
+      //ladder.add(startWord.toLowerCase());
+      queue.addLast(new Node(startWord, null)); 
+      while (!queue.isEmpty()) {
+         Node n = queue.removeFirst();
+         String word = n.string;
+         for (String neighbor: getNeighbors(word)) {
+            String neighborWord = neighbor.toUpperCase();
+            if (!visitedWords.contains(neighborWord) 
+               && !neighborWord.equals(endWord)) {
+               visitedWords.add(neighborWord);
+               queue.addLast(new Node(neighborWord, n));
+            }
+            if (neighborWord.equals(endWord)) {
+               ladder.add(startWord.toLowerCase());
+               Stack<String> stack = new Stack<String>();
+               while (n.next != null) {
+                  stack.push(n.string.toLowerCase());
+                  n = n.next;
+               }
+               if (stack != null && !stack.isEmpty()) {
+                  Stack<String> newStack = new Stack<String>();
+                  newStack.addAll(stack);
+                  for (String item : newStack) {
+                     ladder.add(stack.pop());
+                  }
+               }
+               ladder.add(neighborWord.toLowerCase());
+               return ladder;  
+            }           
+         }
+         
+      
+      } 
+      return ladder;
+   }
+   public List<String> getNeighbors(String word) {
+      List<String> neighbors = new ArrayList<String>();
+      char[] characters = word.toUpperCase().toCharArray();
+      for (int k = 0; k < characters.length; k++) { // for each character in word
+         char[] wordToCheck = Arrays.copyOf(characters, characters.length); //original word each time
+         for (char h = 65; h <= 90; h++) { // for each possible substitution for letter
+            wordToCheck[k] = h;
+            String neighbor = String.valueOf(wordToCheck).toUpperCase();
+            if (lexicon.contains(neighbor)) {
+               if (!neighbor.equals(word.toUpperCase())) {
+                  neighbors.add(neighbor.toLowerCase());
+               }
+            }
+         }
+      }
+      return neighbors;
+   }
+   public int getWordCount() {
+      return lexicon.size();
+   }
+   public boolean isWord(String str) {
+      return (lexicon.contains(str.toUpperCase()));
+   }
+   public boolean isWordLadder(List<String> sequence) {
+      if (sequence == null || sequence.size() == 0) {
+         return false;
+      }
+      for (int g = 0; g < sequence.size() - 1; g++) {
+         String entry = sequence.get(g);
+         String nextEntry = sequence.get(g + 1);
+         if (!lexicon.contains(entry.toUpperCase())) {
+            return false;
+         }
+         if (getHammingDistance(entry, nextEntry) != 1) {
+            return false;
+         }  
+      }
+      return true;
+   }
+   
+   public class Node {
+      public String string;
+      public Node next;
+   
+      public Node(String string, Node next) {
+         this.string = string;
+         this.next = next;
+      }
+      public Node(String string) {
+         this.string = string;
+         this.next = null;
+        
+      }
+   }  
+
+}
+
+
