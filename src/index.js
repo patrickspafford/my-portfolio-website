@@ -7,11 +7,11 @@ import App from './App';
 import Bookshelf from './components/BookShelfPage/BookshelfPage';
 import Hobbies from './components/HobbiesPage/HobbiesPage';
 import Projects from './components/ProjectsPage/ProjectsPage';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory'
-import { Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-
+const createHistory = require("history").createBrowserHistory;
 ReactGA.initialize("UA-161444419-1");
 
 const history = createHistory()
