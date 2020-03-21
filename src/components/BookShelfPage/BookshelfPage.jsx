@@ -219,7 +219,7 @@ export default function BookshelfPage() {
             {expansionPanels.map((expansionPanel, i) => {
                 return (
                         <ThemeProvider theme={theme} key={i}>
-                            <StyledExpansionPanel>
+                            <StyledExpansionPanel defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMore style={{color: 'white'}}/>}>
                                     <Icon style={{marginRight: '10px'}}>
                                     {expansionPanel.icon}
@@ -229,7 +229,7 @@ export default function BookshelfPage() {
                                     </Typography>
                                 </ExpansionPanelSummary>
                                 <StyledExpansionPanelDetails>
-                                    <Grid container={true} style={{justify: 'center'}}>
+                                    <Grid container={true} style={{justifyContent: 'center'}}>
                                     {expansionPanel.books.map(book =>
                                     <Book key={book.title} title={book.title} image={book.img} desc={book.description} />)}
                                     </Grid>
