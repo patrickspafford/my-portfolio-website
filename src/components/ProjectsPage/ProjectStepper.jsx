@@ -160,7 +160,7 @@ export default function ProjectStepper() {
                          }}
     </Step>
     <div style={{textAlign: 'center'}}>
-    {activeStep === steps.length ? (
+    {activeStep === steps.length - 1 ? (
       <div>
         <Typography className={classes.instructions}>This is the end of the tour, but there is more in development...</Typography>
         <Button classes={{label: classes.buttonLabel }} onClick={() => setActiveStep(0)}>Reset</Button>
