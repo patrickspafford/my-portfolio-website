@@ -140,6 +140,7 @@ export default function ProjectStepper() {
     const isCurrentProject = activeStep === i;
     if (isCurrentProject) {
     return (
+  <>
     <Step key={label}>
       <StepLabel classes={{root: classes.stepLabel}}>
         {label}
@@ -155,8 +156,33 @@ export default function ProjectStepper() {
                         panelTitle={currentProject.panelTitle}
                         videos={currentProject.videos}
                         sampleCode={currentProject.sampleCode}
-                        language={currentProject.language} /> }}
+                        language={currentProject.language} />
+                         }}
     </Step>
+    <div style={{textAlign: 'center'}}>
+    {activeStep === steps.length - 1 ? (
+      <div>
+        <Typography className={classes.instructions}>This is the end of the tour, but there is more in development...</Typography>
+        <Button classes={{label: classes.buttonLabel }} onClick={() => setActiveStep(0)}>Reset</Button>
+      </div>
+    ) : (
+      <div style={{textAlign: 'center'}}>
+       
+        <div>
+          <Button
+            classes={{label: classes.buttonLabel}}
+            disabled={activeStep === 0}
+            onClick={() => setActiveStep(prevActiveStep => prevActiveStep - 1)}>
+            Back
+          </Button>
+          <Button classes={{label: classes.buttonLabel}} onClick={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}>
+            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+          </Button>
+        </div>
+      </div>
+    )}
+  </div>
+  </>
   )
 }
 else {
@@ -177,29 +203,6 @@ else {
       <Stepper classes={{root: classes.stepper}} steps={7} activeStep={activeStep} orientation='vertical' >
         {stepperBody}
       </Stepper>
-      <div style={{textAlign: 'center'}}>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>This is the end of the tour, but there is more in development...</Typography>
-            <Button classes={{label: classes.buttonLabel }} onClick={() => setActiveStep(0)}>Reset</Button>
-          </div>
-        ) : (
-          <div style={{textAlign: 'center'}}>
-           
-            <div>
-              <Button
-                classes={{label: classes.buttonLabel}}
-                disabled={activeStep === 0}
-                onClick={() => setActiveStep(prevActiveStep => prevActiveStep - 1)}>
-                Back
-              </Button>
-              <Button classes={{label: classes.buttonLabel}} onClick={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
